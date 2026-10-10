@@ -3,100 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Practical Care BD</title>
+<meta name="theme-color" content="#0754c7">
+<title>Practical Care BD | Your Study Partner</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f8ff;color:#17233b}
-header{background:#fff;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #dce5f5}
-.logo{font-size:22px;font-weight:bold;color:#1769e0}
-nav a{color:#24344d;text-decoration:none;margin-left:14px;font-size:14px}
-.hero{margin:24px auto;padding:38px 24px;max-width:1100px;border-radius:22px;background:linear-gradient(135deg,#0754c7,#398bff);color:white}
-.hero h1{font-size:36px;margin:0 0 14px}
-.hero p{line-height:1.8;max-width:600px}
-.btn{display:inline-block;background:white;color:#0754c7;padding:12px 20px;border-radius:9px;text-decoration:none;font-weight:bold;margin:8px 8px 0 0}
-.btn2{background:#083d8d;color:white;border:1px solid #8dbbff}
-section{max-width:1100px;margin:35px auto;padding:0 20px}
-h2{font-size:25px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 16px #e1e9f7}
-.card .emoji{font-size:30px}
-.card h3{margin-bottom:8px}
-.card p{color:#5a6980;line-height:1.7}
-.notice{background:#e9f2ff;border-left:4px solid #1769e0;padding:17px;border-radius:8px;line-height:1.8}
-footer{text-align:center;padding:28px;background:#102b52;color:white;margin-top:45px}
-footer p{color:#d8e6ff}
-@media(max-width:600px){
- header{padding:14px;display:block}
- nav{margin-top:14px}
- nav a{margin:0 12px 0 0;display:inline-block;line-height:2}
- .hero{margin:14px;padding:28px 20px}
- .hero h1{font-size:29px}
+:root{--blue:#0866e9;--navy:#08264e;--light:#edf6ff;--text:#152c4d}
+body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;color:var(--text);background:#fff;line-height:1.65}
+a{text-decoration:none;color:inherit}
+.top{background:#063a80;color:white;padding:8px 5%;font-size:12px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+header{background:white;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 5%;box-shadow:0 3px 14px #0b326510;position:sticky;top:0;z-index:5}
+.brand{font-size:23px;font-weight:800;color:var(--navy);line-height:1.2}
+.brand span{color:var(--blue)}
+.tagline{font-size:12px;color:#73839a}
+nav{display:flex;align-items:center;gap:19px;flex-wrap:wrap;font-size:14px}
+nav a:hover{color:var(--blue)}
+.orderbtn,.primary{background:var(--blue);color:white;padding:11px 18px;border-radius:25px;font-weight:bold;display:inline-block}
+.hero{margin:0;background:linear-gradient(110deg,#eef7ff,#dcecff);overflow:hidden}
+.hero-inner{max-width:1180px;margin:auto;padding:55px 5%;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:28px;min-height:370px}
+.eyebrow{background:#d1e7ff;color:#0754b8;border-radius:20px;padding:6px 12px;font-size:13px;display:inline-block}
+h1{font-size:clamp(34px,5vw,51px);line-height:1.14;margin:18px 0;color:var(--navy)}
+h1 span{color:var(--blue)}
+.hero p{font-size:17px;max-width:600px}
+.checks{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0;font-size:13px}
+.checks span:before{content:"✓";background:var(--blue);color:white;border-radius:50%;padding:1px 5px;margin-right:6px}
+.hero-art{min-height:250px;border-radius:25px;background:linear-gradient(140deg,#c3e1ff,#f7fbff);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px}
+.book-art{font-size:85px;line-height:1.4}
+.book-art strong{display:block;font-size:23px;color:var(--navy)}
+.book-art small{font-size:14px;color:#48678b}
+.section{max-width:1180px;margin:0 auto;padding:38px 5%}
+.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+h2{font-size:26px;margin:0;color:var(--navy)}
+.sub{color:#72839a;margin:3px 0 20px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card{padding:21px;border-radius:13px;border:1px solid #e5edf7;box-shadow:0 4px 14px #18395d0a;background:white}
+.card:nth-child(1){background:#f0f7ff}
+.card:nth-child(2){background:#effcf5}
+.card:nth-child(3){background:#f7f0ff}
+.card:nth-child(4){background:#fff8ed}
+.ico{width:45px;height:45px;display:grid;place-items:center;background:#d7eaff;border-radius:12px;font-size:25px}
+.card h3{font-size:17px;margin:13px 0 5px}
+.card p{font-size:14px;color:#586c84;margin:0 0 14px}
+.circle{display:inline-grid;place-items:center;background:var(--blue);color:white;width:34px;height:34px;border-radius:50%}
+.posts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.post{border:1px solid #e5edf7;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #18395d0c}
+.postpic{height:120px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#d7eaff,#edf6ff)}
+.postbody{padding:15px}
+.chip{font-size:11px;background:#0871ed;color:white;border-radius:5px;padding:3px 8px}
+.post h3{font-size:16px;line-height:1.5;margin:10px 0}
+.post p{font-size:12px;color:#8491a2}
+.about{background:#edf6ff;border-radius:16px;padding:25px;display:grid;grid-template-columns:.7fr 1.3fr;gap:24px;align-items:center}
+.about-art{text-align:center;font-size:76px}
+.about p{font-size:14px}
+.quote{background:white;padding:17px;border-radius:12px;color:#3c5b82;font-size:15px}
+footer{background:#06254a;color:white;padding:35px 5% 20px}
+.footer-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
+footer a{display:block;font-size:13px;color:#d5e4f9;margin:5px 0}
+footer p{font-size:13px;color:#d5e4f9}
+.copy{border-top:1px solid #ffffff25;margin-top:25px;padding-top:15px;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:850px){
+ header{align-items:flex-start;flex-direction:column;gap:12px}
+ nav{gap:14px}
+ .hero-inner{grid-template-columns:1fr;padding:38px 6%}
+ .hero-art{min-height:180px}
+ .cards,.posts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .about{grid-template-columns:1fr}
+ .about-art{font-size:55px}
+}
+@media(max-width:420px){
+ .brand{font-size:21px}
+ nav{gap:10px;font-size:13px}
+ .cards,.posts{gap:10px}
+ .card{padding:14px}
+ .card h3,.post h3{font-size:14px}
+ .section{padding:28px 4%}
+ h2{font-size:22px}
+ .hero p{font-size:15px}
+ .book-art{font-size:65px}
 }
 </style>
 </head>
 <body>
+<div class="top">
+ <span>🎓 HSC 2027 &nbsp; | &nbsp; Science Group &nbsp; | &nbsp; Learn Today, Build Tomorrow</span>
+ <span>📘 Practical Care BD</span>
+</div>
 <header>
-  <div class="logo">📘 Practical Care BD</div>
-  <nav>
-    <a href="#home">হোম</a>
-    <a href="#services">সার্ভিস</a>
-    <a href="#order">অর্ডার</a>
-    <a href="#contact">যোগাযোগ</a>
-  </nav>
+ <a href="#home">
+  <div class="brand">📘 Practical <span>Care BD</span></div>
+  <div class="tagline">Your Study Partner</div>
+ </a>
+ <nav>
+  <a href="#home">⌂ Home</a>
+  <a href="#services">▤ Study Materials</a>
+  <a href="#assignments">▣ Assignments</a>
+  <a href="#about">♟ About</a>
+  <a href="#contact">✉ Contact</a>
+  <a class="orderbtn" href="#order">🛒 Order Now</a>
+ </nav>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <h1>পড়াশোনা হোক আরও সহজ!</h1>
-  <p>HSC শিক্ষার্থীদের প্র্যাকটিক্যাল নোট, পড়াশোনার গাইড ও প্রয়োজনীয় স্টাডি রিসোর্সের জন্য তোমার বিশ্বস্ত ঠিকানা—Practical Care BD।</p>
-  <a class="btn" href="#services">সার্ভিস দেখো →</a>
-  <a class="btn btn2" href="#order">অর্ডার করতে চাই</a>
+ <div class="hero-inner">
+  <div>
+   <span class="eyebrow">🎓 Welcome to Practical Care BD</span>
+   <h1>Study Smarter,<br><span>Not Harder</span></h1>
+   <p>HSC 2027 বিজ্ঞান বিভাগের শিক্ষার্থীদের জন্য প্রয়োজনীয় নোট, সাজেশন, অ্যাসাইনমেন্ট ও পড়াশোনার সহায়তা।</p>
+   <div class="checks">
+    <span>Quality Notes</span><span>MCQ Practice</span><span>Assignment Help</span>
+   </div>
+   <a class="primary" href="#services">Explore Now →</a>
+  </div>
+  <div class="hero-art">
+   <div class="book-art">📚 ☕<strong>Better Notes</strong><strong>Better Future</strong><small>Learn • Practice • Progress</small></div>
+  </div>
+ </div>
 </section>
 
-<section id="services">
-  <h2>📚 আমাদের সার্ভিস</h2>
-  <div class="cards">
-    <div class="card">
-      <div class="emoji">🧪</div>
-      <h3>প্র্যাকটিক্যাল নোট</h3>
-      <p>বিষয়ভিত্তিক প্র্যাকটিক্যাল নোট গুছিয়ে নেওয়ার সহায়তা।</p>
-    </div>
-    <div class="card">
-      <div class="emoji">📖</div>
-      <h3>স্টাডি রিসোর্স</h3>
-      <p>HSC শিক্ষার্থীদের জন্য প্রয়োজনীয় পড়াশোনার উপকরণ।</p>
-    </div>
-    <div class="card">
-      <div class="emoji">📝</div>
-      <h3>অ্যাসাইনমেন্ট সহায়তা</h3>
-      <p>বিষয় বুঝে কাজ গুছিয়ে নেওয়ার জন্য শিক্ষামূলক সহায়তা।</p>
-    </div>
-  </div>
+<section class="section" id="services">
+ <div class="section-heading"><h2>▣ Our Services</h2><a href="#services">View All →</a></div>
+ <p class="sub">তোমার পড়াশোনার প্রতিটি ধাপে আমরা আছি তোমার সাথে!</p>
+ <div class="cards">
+  <article class="card"><div class="ico">📘</div><h3>HSC Notes</h3><p>Physics, Chemistry, Biology, Math, ICT</p><a class="circle" href="#order">→</a></article>
+  <article class="card"><div class="ico">☑️</div><h3>MCQ & Practice</h3><p>Board ও University Past Questions</p><a class="circle" href="#order">→</a></article>
+  <article class="card" id="assignments"><div class="ico">📄</div><h3>Assignments</h3><p>Chapter-wise ও Weekly Practice</p><a class="circle" href="#order">→</a></article>
+  <article class="card"><div class="ico">🔗</div><h3>Study Resources</h3><p>App, Website, PDF & More</p><a class="circle" href="#contact">→</a></article>
+ </div>
 </section>
 
-<section id="order">
-  <h2>📦 অর্ডার করতে চাও?</h2>
-  <div class="notice">
-    অর্ডার ফর্ম ও অর্ডার ট্র্যাকিং সুবিধা আমরা পরের ধাপে যুক্ত করব।
-    <br><br>
-    <a class="btn" href="mailto:practicalcarebd@gmail.com?subject=Practical%20Care%20BD%20Order">ইমেইলে যোগাযোগ করো</a>
-  </div>
+<section class="section">
+ <div class="section-heading"><h2>⭐ Latest Posts</h2><a href="#contact">View All Posts →</a></div>
+ <p class="sub">সর্বশেষ আপডেট, নোট ও গুরুত্বপূর্ণ তথ্য</p>
+ <div class="posts">
+  <article class="post"><div class="postpic">🧪</div><div class="postbody"><span class="chip">Chemistry</span><h3>মৌলের পর্যায়বৃত্ত ধর্ম — HSC প্রস্তুতি</h3><p>📅 Study Notes · Chemistry</p></div></article>
+  <article class="post"><div class="postpic">🧬</div><div class="postbody"><span class="chip">Biology</span><h3>DNA Sequencing — সহজ ব্যাখ্যা</h3><p>📅 Biology · Study Notes</p></div></article>
+  <article class="post"><div class="postpic">📐</div><div class="postbody"><span class="chip">Physics</span><h3>পদার্থবিজ্ঞান — অধ্যায়ভিত্তিক প্রস্তুতি</h3><p>📅 Physics · Study Notes</p></div></article>
+  <article class="post"><div class="postpic">💻</div><div class="postbody"><span class="chip">ICT</span><h3>HSC ICT — HTML Practice</h3><p>📅 ICT · Practice</p></div></article>
+ </div>
 </section>
 
-<section id="contact">
-  <h2>📞 যোগাযোগ</h2>
-  <div class="card">
-    <p>ওয়েবসাইট: Practical Care BD</p>
-    <p>ইমেইল: practicalcarebd@gmail.com</p>
-    <p>তোমার আসল যোগাযোগের তথ্য পরে এখানে বসিয়ে নিও।</p>
+<section class="section" id="about">
+ <div class="about">
+  <div class="about-art">🎓📚</div>
+  <div><h2>♟ About Practical Care BD</h2>
+   <p>Practical Care BD হলো HSC 2027 বিজ্ঞান বিভাগের শিক্ষার্থীদের পড়াশোনার সহায়ক একটি উদ্যোগ। এখানে নোট, অনুশীলন, অ্যাসাইনমেন্ট ও প্রয়োজনীয় স্টাডি রিসোর্স সুন্দরভাবে সাজিয়ে দেওয়ার লক্ষ্য নিয়ে কাজ করা হচ্ছে।</p>
+   <a class="primary" href="#contact">Learn More →</a>
   </div>
+  <div class="quote">❝ স্বপ্ন দেখো, পরিশ্রম করো, সফলতা আসবেই। ❞<br><small>— Practical Care BD</small></div>
+ </div>
+</section>
+
+<section class="section" id="order">
+ <h2>🛒 Order Now</h2>
+ <p class="sub">তোমার প্রয়োজনীয় নোট বা প্র্যাকটিক্যাল সম্পর্কে জানতে আমাদের সঙ্গে যোগাযোগ করো।</p>
+ <div class="notice card">
+  <p>📩 আপাতত অর্ডার নেওয়ার জন্য ইমেইল ব্যবহার করো। পরের ধাপে আমরা নিরাপদ অর্ডার ফর্ম ও ট্র্যাকিং যুক্ত করব।</p>
+  <a class="primary" href="mailto:practicalcarebd@gmail.com?subject=Practical%20Care%20BD%20Order">Email to Order →</a>
+ </div>
 </section>
 </main>
 
-<footer>
-  <strong>Practical Care BD</strong>
-  <p>শিক্ষার্থীদের পাশে, পড়াশোনার পথে।</p>
-  <small>© 2026 Practical Care BD</small>
+<footer id="contact">
+ <div class="footer-grid">
+  <div><div class="brand" style="color:white">📘 Practical Care BD</div><p>Your Study Partner</p><p>একসাথে শিখি, একসাথে এগিয়ে যাই।</p></div>
+  <div><strong>Quick Links</strong><a href="#home">⌂ Home</a><a href="#services">▤ Study Materials</a><a href="#assignments">▣ Assignments</a><a href="#about">About</a></div>
+  <div><strong>Contact Info</strong><a href="mailto:practicalcarebd@gmail.com">✉ practicalcarebd@gmail.com</a><p>📍 Bangladesh</p></div>
+ </div>
+ <div class="copy"><span>© 2026 Practical Care BD. All rights reserved.</span><span>Learn Today, Build Tomorrow</span></div>
 </footer>
 </body>
 </html>
