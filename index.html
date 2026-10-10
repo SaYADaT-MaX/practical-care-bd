@@ -431,29 +431,124 @@
       </div>
     </section>
 
-    <section id="order">
-      <div class="container">
-        <div class="order-panel">
-          <span class="eyebrow">PLACE AN ORDER</span>
-          <h2>তোমার প্র্যাকটিক্যালের অর্ডার দাও</h2>
-          <p>
-            বিষয়, প্র্যাকটিক্যালের সংখ্যা ও জমা দেওয়ার তারিখ প্রস্তুত রাখো।
-            ফর্ম পাঠানোর পর অর্ডার ও মূল্য নিশ্চিত না হওয়া পর্যন্ত কাজ
-            নিশ্চিত হয়েছে ধরে নিও না।
-          </p>
-          <a class="btn" id="orderBtn"
-             href="https://docs.google.com/forms/d/e/1FAIpQLSe-AJA7npREu5w030IDLTkrLDrzhnI2oiyGJREcRtixc6csow/viewform?usp=preview"
-             target="_blank" rel="noopener noreferrer">
-            Google Form খুলে অর্ডার করো ↗
-          </a>
-          <div class="notice">
-            শিক্ষকের নির্দেশনা অনুযায়ী সঠিক তথ্য দাও। পরীক্ষার ফলাফল,
-            পর্যবেক্ষণ বা অন্য তথ্য বানিয়ে না দিয়ে বাস্তব কাজ ও
-            অনুমোদিত নির্দেশনা অনুসরণ করো।
-          </div>
+    <section id="order" class="order-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">PLACE YOUR ORDER</span>
+      <h2>প্র্যাকটিক্যাল অর্ডার করো</h2>
+      <p>তথ্য পূরণ করো, মোট মূল্য দেখো এবং অর্ডারের বিস্তারিত পাঠাও।</p>
+    </div>
+
+    <div class="order-layout">
+      <form id="practicalOrderForm" class="order-form">
+        <div class="form-field">
+          <label for="customerName">তোমার নাম *</label>
+          <input id="customerName" name="customerName"
+                 required maxlength="80" autocomplete="name"
+                 placeholder="তোমার নাম লিখো">
         </div>
-      </div>
-    </section>
+
+        <div class="form-field">
+          <label for="classLevel">শ্রেণি *</label>
+          <select id="classLevel" name="classLevel" required>
+            <option value="">শ্রেণি নির্বাচন করো</option>
+            <option>SSC</option>
+            <option>HSC</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="subject">বিষয় *</label>
+          <select id="subject" name="subject" required>
+            <option value="">বিষয় নির্বাচন করো</option>
+            <option>পদার্থবিজ্ঞান</option>
+            <option>রসায়ন</option>
+            <option>জীববিজ্ঞান</option>
+            <option>ICT</option>
+            <option>অন্যান্য</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="quantity">কতটি প্র্যাকটিক্যাল? *</label>
+          <input id="quantity" name="quantity" type="number"
+                 min="1" max="100" step="1" value="1" required>
+        </div>
+
+        <div class="form-field">
+          <label for="deadline">কবে প্রয়োজন? *</label>
+          <input id="deadline" name="deadline" type="date" required>
+        </div>
+
+        <div class="form-field">
+          <label for="meetupArea">কোন এলাকায় হাতে নিতে সুবিধা? *</label>
+          <input id="meetupArea" name="meetupArea"
+                 required maxlength="120"
+                 placeholder="শুধু এলাকা বা পরিচিত স্থান">
+        </div>
+
+        <div class="form-field">
+          <label for="contactInfo">যোগাযোগের তথ্য *</label>
+          <input id="contactInfo" name="contactInfo"
+                 required maxlength="100"
+                 placeholder="ইমেইল বা যোগাযোগের নম্বর">
+        </div>
+
+        <div class="form-field">
+          <label for="details">অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label>
+          <textarea id="details" name="details" rows="3"
+                    maxlength="500"
+                    placeholder="প্র্যাকটিক্যালের নাম বা বিশেষ নির্দেশনা"></textarea>
+        </div>
+
+        <div class="order-total">
+          <span>আনুমানিক মোট মূল্য</span>
+          <strong id="totalPrice">৳২০</strong>
+          <small>প্রতি প্র্যাকটিক্যাল ৳২০</small>
+        </div>
+
+        <button type="submit" class="btn order-submit">
+          ইমেইলে অর্ডারের খসড়া তৈরি করো ↗
+        </button>
+
+        <a class="btn btn-outline order-submit"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSe-AJA7npREu5w030IDLTkrLDrzhnI2oiyGJREcRtixc6csow/viewform?usp=preview"
+           target="_blank" rel="noopener noreferrer">
+          Google Form খুলুন
+        </a>
+
+        <p class="form-note">
+          অর্ডার পাঠানোর আগে মূল্য, ডেডলাইন ও ডেলিভারির স্থান নিশ্চিত করা হবে।
+          ফর্মে নিজের পাসওয়ার্ড বা অপ্রয়োজনীয় ব্যক্তিগত তথ্য দিও না।
+        </p>
+      </form>
+
+      <aside class="order-summary">
+        <div class="summary-icon">✍️</div>
+        <h3>Practical Care BD</h3>
+        <p>SSC ও HSC শিক্ষার্থীদের হাতে লেখা প্র্যাকটিক্যাল সার্ভিস।</p>
+
+        <div class="summary-row">
+          <span>প্রতি প্র্যাকটিক্যাল</span>
+          <strong>৳২০</strong>
+        </div>
+        <div class="summary-row">
+          <span>ডেলিভারি</span>
+          <strong>সরাসরি হাতে</strong>
+        </div>
+        <div class="summary-row">
+          <span>অর্ডার স্ট্যাটাস</span>
+          <strong>নিশ্চিতকরণ বাকি</strong>
+        </div>
+
+        <div class="notice">
+          অর্ডার গ্রহণের আগে দেখা করার নিরাপদ স্থান ও সময় দুপক্ষের সম্মতিতে
+          ঠিক করা হবে।
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
     <section id="contact">
       <div class="container">
