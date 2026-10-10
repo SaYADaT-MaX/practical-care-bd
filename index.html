@@ -37,6 +37,7 @@ nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
   background:linear-gradient(110deg,var(--blue),var(--purple));
   color:white;font-weight:700;cursor:pointer;font-family:inherit
 }
+.btn:disabled{opacity:.6;cursor:wait}
 .container{width:min(1100px,92%);margin:auto}
 .hero{
   display:grid;grid-template-columns:1.2fr .8fr;gap:28px;
@@ -77,7 +78,10 @@ legend{padding:0 8px;color:var(--blue);font-weight:700}
 .price{font-size:22px;color:#a3ff83;font-weight:700}
 footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 .small{font-size:13px}
-#status{display:none;padding:13px;border-radius:10px;overflow-wrap:anywhere}
+#status{
+  display:none;padding:13px;border-radius:10px;
+  overflow-wrap:anywhere;white-space:pre-line
+}
 @media(max-width:760px){
   header{align-items:flex-start;flex-direction:column}
   nav{gap:12px}
@@ -153,18 +157,18 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
         <div class="row">
           <div>
             <label for="name">তোমার পূর্ণ নাম *</label>
-            <input id="name" name="শিক্ষার্থীর নাম" required maxlength="100" placeholder="পূর্ণ নাম">
+            <input id="name" required maxlength="100" placeholder="পূর্ণ নাম">
           </div>
           <div>
             <label for="phone">মোবাইল নম্বর *</label>
-            <input id="phone" name="শিক্ষার্থীর মোবাইল" required inputmode="tel" maxlength="20" placeholder="01XXXXXXXXX">
+            <input id="phone" required inputmode="tel" maxlength="20" placeholder="01XXXXXXXXX">
           </div>
         </div>
 
         <div class="row">
           <div>
             <label for="level">কোন শ্রেণি? *</label>
-            <select id="level" name="শ্রেণি" required>
+            <select id="level" required>
               <option value="">নির্বাচন করো</option>
               <option value="SSC">SSC</option>
               <option value="HSC">HSC</option>
@@ -172,7 +176,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
           </div>
           <div>
             <label for="group">বিভাগ / গ্রুপ</label>
-            <select id="group" name="গ্রুপ">
+            <select id="group">
               <option>বিজ্ঞান</option>
               <option>মানবিক</option>
               <option>ব্যবসায় শিক্ষা</option>
@@ -191,22 +195,22 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
         <div class="row">
           <div>
             <label for="writeCount">কয়টি প্র্যাকটিক্যাল লিখিয়ে নিতে চাও? *</label>
-            <input type="number" id="writeCount" name="লিখিয়ে নেওয়ার সংখ্যা" min="1" max="100" required value="1">
+            <input type="number" id="writeCount" min="1" max="100" required value="1">
           </div>
           <div>
             <label for="submitCount">কয়টি প্র্যাকটিক্যাল জমা দিতে হবে? *</label>
-            <input type="number" id="submitCount" name="জমা দেওয়ার সংখ্যা" min="1" max="100" required value="1">
+            <input type="number" id="submitCount" min="1" max="100" required value="1">
           </div>
         </div>
 
         <div class="row">
           <div>
             <label for="deadline">কোন তারিখের মধ্যে প্র্যাকটিক্যাল লাগবে? *</label>
-            <input type="date" id="deadline" name="প্রয়োজনীয় শেষ তারিখ" required>
+            <input type="date" id="deadline" required>
           </div>
           <div>
             <label for="duration">কাজের জন্য কত দিন সময় দিতে পারবে? *</label>
-            <select id="duration" name="কাজের সময়সীমা" required>
+            <select id="duration" required>
               <option value="">নির্বাচন করো</option>
               <option>১ দিন</option>
               <option>২ দিন</option>
@@ -220,7 +224,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 
         <div>
           <label for="delivery">প্র্যাকটিক্যাল কীভাবে নিতে চাও? *</label>
-          <select id="delivery" name="ডেলিভারি পদ্ধতি" required>
+          <select id="delivery" required>
             <option value="">নির্বাচন করো</option>
             <option>সরাসরি হাতে নিতে চাই</option>
             <option>কুরিয়ার / ডাকযোগে নিতে চাই</option>
@@ -230,13 +234,13 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 
         <div>
           <label for="area">এলাকা / ঠিকানা (ডেলিভারির জন্য প্রয়োজন হলে)</label>
-          <input id="area" name="এলাকা ও ঠিকানা" maxlength="300" placeholder="এলাকা, উপজেলা, জেলা">
+          <input id="area" maxlength="300" placeholder="এলাকা, উপজেলা, জেলা">
         </div>
 
         <div class="row">
           <div>
             <label for="payment">পেমেন্টের অবস্থা *</label>
-            <select id="payment" name="পেমেন্টের অবস্থা" required>
+            <select id="payment" required>
               <option value="">নির্বাচন করো</option>
               <option>এখনো পেমেন্ট করিনি</option>
               <option>নগদে পেমেন্ট করেছি</option>
@@ -244,13 +248,13 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
           </div>
           <div>
             <label for="trx">নগদ TrxID</label>
-            <input id="trx" name="Nagad TrxID" maxlength="100" placeholder="পেমেন্ট করলে TrxID লিখো">
+            <input id="trx" maxlength="100" placeholder="পেমেন্ট করলে TrxID লিখো">
           </div>
         </div>
 
         <div>
           <label for="details">অতিরিক্ত নির্দেশনা</label>
-          <textarea id="details" name="অতিরিক্ত নির্দেশনা" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা, কলেজের নির্দেশনা বা অন্য তথ্য লিখো..."></textarea>
+          <textarea id="details" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা, কলেজের নির্দেশনা বা অন্য তথ্য লিখো..."></textarea>
         </div>
 
         <label class="check">
@@ -266,9 +270,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
   </section>
 
   <section class="section">
-    <div class="section-title">
-      <h2>অর্ডার কীভাবে এগোবে?</h2>
-    </div>
+    <div class="section-title"><h2>অর্ডার কীভাবে এগোবে?</h2></div>
     <div class="steps">
       <div class="card"><h3>১. অর্ডার পাঠাও</h3><p>প্রয়োজনীয় তথ্য ও ডেডলাইন দাও।</p></div>
       <div class="card"><h3>২. সময় ও পেমেন্ট যাচাই</h3><p>কাজের পরিমাণ, সময় ও পেমেন্টের তথ্য যাচাই করে নিশ্চিত করা হবে।</p></div>
@@ -277,9 +279,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
   </section>
 
   <section class="section" id="contact">
-    <div class="section-title">
-      <h2>যোগাযোগ ও পেমেন্ট</h2>
-    </div>
+    <div class="section-title"><h2>যোগাযোগ ও পেমেন্ট</h2></div>
     <div class="grid">
       <div class="card"><h3>📱 নগদ</h3><p>01336478777</p><p class="small">পেমেন্টের আগে পরিমাণ নিশ্চিত করো।</p></div>
       <div class="card"><h3>✉️ ইমেইল</h3><p><a href="mailto:mdsayadathossain2007@gmail.com">mdsayadathossain2007@gmail.com</a></p></div>
@@ -320,55 +320,65 @@ const form = document.getElementById("orderForm");
 const statusBox = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
 
-// আজকের আগের তারিখ বেছে নেওয়া বন্ধ।
 const today = new Date();
-const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
-  .toISOString().slice(0, 10);
+const localToday = new Date(
+  today.getTime() - today.getTimezoneOffset() * 60000
+).toISOString().slice(0, 10);
 deadline.min = localToday;
 
 const subjects = {
   SSC: ["পদার্থবিজ্ঞান", "রসায়ন", "জীববিজ্ঞান", "ICT"],
   HSC: [
-    "পদার্থবিজ্ঞান ১ম পত্র", "পদার্থবিজ্ঞান ২য় পত্র",
-    "রসায়ন ১ম পত্র", "রসায়ন ২য় পত্র",
-    "জীববিজ্ঞান ১ম পত্র", "জীববিজ্ঞান ২য় পত্র", "ICT"
+    "পদার্থবিজ্ঞান ১ম পত্র",
+    "পদার্থবিজ্ঞান ২য় পত্র",
+    "রসায়ন ১ম পত্র",
+    "রসায়ন ২য় পত্র",
+    "জীববিজ্ঞান ১ম পত্র",
+    "জীববিজ্ঞান ২য় পত্র",
+    "ICT"
   ]
 };
 
 function renderSubjects() {
-  const chosenLevel = level.value;
   subjectList.replaceChildren();
 
-  if (!chosenLevel) {
+  if (!level.value) {
     const message = document.createElement("p");
     message.textContent = "প্রথমে শ্রেণি নির্বাচন করো।";
     subjectList.appendChild(message);
     return;
   }
 
-  subjects[chosenLevel].forEach((subject, index) => {
+  subjects[level.value].forEach(subject => {
     const label = document.createElement("label");
     label.className = "check";
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.name = "বিষয় ও পত্র";
+    checkbox.name = "subjects";
     checkbox.value = subject;
-    checkbox.required = index === 0;
 
-    // অন্তত একটি বিষয় নির্বাচন আবশ্যক।
-    checkbox.addEventListener("change", () => {
-      const boxes = subjectList.querySelectorAll('input[type="checkbox"]');
-      const anyChecked = [...boxes].some(box => box.checked);
-      boxes.forEach(box => box.required = !anyChecked);
-    });
+    checkbox.addEventListener("change", updateSubjectValidation);
 
     const text = document.createElement("span");
     text.textContent = subject;
+
     label.append(checkbox, text);
     subjectList.appendChild(label);
   });
+
+  updateSubjectValidation();
 }
+
+function updateSubjectValidation() {
+  const boxes = [...subjectList.querySelectorAll('input[type="checkbox"]')];
+  const anyChecked = boxes.some(box => box.checked);
+
+  boxes.forEach(box => {
+    box.required = !anyChecked;
+  });
+}
+
 level.addEventListener("change", renderSubjects);
 
 payment.addEventListener("change", () => {
@@ -381,7 +391,9 @@ payment.addEventListener("change", () => {
 function showStatus(message, success = false) {
   statusBox.style.display = "block";
   statusBox.style.background = success ? "#103c2c" : "#38251b";
-  statusBox.style.border = success ? "1px solid #2ea879" : "1px solid #b87942";
+  statusBox.style.border = success
+    ? "1px solid #2ea879"
+    : "1px solid #b87942";
   statusBox.textContent = message;
 }
 
@@ -390,10 +402,11 @@ form.addEventListener("submit", async event => {
 
   if (!form.reportValidity()) return;
 
-  const selectedSubjects = [...subjectList.querySelectorAll("input:checked")]
-    .map(input => input.value);
+  const selectedSubjects = [
+    ...subjectList.querySelectorAll("input:checked")
+  ].map(input => input.value);
 
-  if (selectedSubjects.length === 0) {
+  if (!selectedSubjects.length) {
     showStatus("কমপক্ষে একটি বিষয় নির্বাচন করো।");
     return;
   }
@@ -403,13 +416,75 @@ form.addEventListener("submit", async event => {
     return;
   }
 
-  // এই সংস্করণে কোনো অর্ডার সার্ভারে সংরক্ষণ করা হচ্ছে না।
-  // ইমেইল/ডাটাবেস ব্যাকএন্ড যুক্ত না হওয়া পর্যন্ত সফলতা দেখানো হবে না।
-  showStatus(
-    "তোমার ফর্মটি পূরণ করা হয়েছে, কিন্তু সাইটে এখনো অর্ডার গ্রহণের সার্ভার যুক্ত নেই। " +
-    "তাই অর্ডার পাঠানো বা নিশ্চিত করা যায়নি। আপাতত নিচের ইমেইল বা ফোনে যোগাযোগ করো: " +
-    "mdsayadathossain2007@gmail.com / 01557125176"
-  );
+  const writeCount = Number(document.getElementById("writeCount").value);
+  const submitCount = Number(document.getElementById("submitCount").value);
+
+  if (!Number.isInteger(writeCount) || writeCount < 1 ||
+      !Number.isInteger(submitCount) || submitCount < 1) {
+    showStatus("প্র্যাকটিক্যালের সংখ্যা সঠিকভাবে লিখো।");
+    return;
+  }
+
+  const payload = {
+    customerName: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    classLevel: level.value,
+    studentGroup: document.getElementById("group").value,
+    subjects: selectedSubjects,
+    writeCount,
+    submitCount,
+    deadline: deadline.value,
+    duration: document.getElementById("duration").value,
+    delivery: document.getElementById("delivery").value,
+    area: document.getElementById("area").value.trim(),
+    paymentStatus: payment.value,
+    trxId: trx.value.trim(),
+    details: document.getElementById("details").value.trim()
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "অর্ডার পাঠানো হচ্ছে...";
+  showStatus("অর্ডার সার্ভারে পাঠানো হচ্ছে...");
+
+  try {
+    const response = await fetch(
+      "https://practical-care-bd-server.onrender.com/api/orders",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "অর্ডার সংরক্ষণ করা যায়নি।");
+    }
+
+    showStatus(
+      "✅ অর্ডার সফলভাবে জমা হয়েছে!\n" +
+      "অর্ডার নম্বর: " + result.orderId + "\n" +
+      "অর্ডার গ্রহণ ও কাজের সময় নিশ্চিতকরণ এখনো বাকি।",
+      true
+    );
+
+    form.reset();
+    renderSubjects();
+    trx.required = false;
+
+  } catch (error) {
+    console.error("Order submission failed:", error);
+
+    showStatus(
+      "❌ অর্ডার পাঠানো যায়নি।\n" +
+      (error.message || "ইন্টারনেট বা সার্ভারের সমস্যা হতে পারে।") +
+      "\nকিছুক্ষণ পরে আবার চেষ্টা করো।"
+    );
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "অর্ডারের তথ্য পাঠাও";
+  }
 });
 </script>
 </body>
