@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order | Practical Care BD</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eff6ff;color:#10284b;font-family:Arial,sans-serif;padding:20px}
+.wrap{max-width:540px;margin:25px auto;background:white;padding:25px;border-radius:18px;box-shadow:0 8px 30px #153d6815}
+h1{color:#0866e9;margin-top:0}
+p{color:#61738b}
+label{display:block;font-weight:bold;margin-top:16px}
+input,select,textarea{width:100%;padding:13px;margin-top:7px;border:1px solid #cbd8e8;border-radius:9px;font-size:16px}
+button{width:100%;margin-top:22px;background:#0866e9;color:white;border:0;border-radius:10px;padding:14px;font-size:17px;font-weight:bold}
+.back{display:inline-block;margin-bottom:20px;color:#0866e9}
+.note{font-size:13px;background:#edf6ff;padding:12px;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← হোমপেজে ফিরে যাও</a>
+<h1>🛒 অর্ডার ফর্ম</h1>
+<p>Practical Care BD-তে অর্ডারের তথ্য পূরণ করো।</p>
+
+<form id="orderForm">
+<label>তোমার নাম *</label>
+<input name="name" required placeholder="সম্পূর্ণ নাম">
+
+<label>ফোন নম্বর *</label>
+<input name="phone" required type="tel" placeholder="01XXXXXXXXX" pattern="01[0-9]{9}">
+
+<label>কোন সেবা নিতে চাও? *</label>
+<select name="service" required>
+<option value="">একটি বেছে নাও</option>
+<option>প্র্যাকটিক্যাল নোট</option>
+<option>HSC বিষয়ভিত্তিক নোট</option>
+<option>MCQ ও প্রশ্নব্যাংক</option>
+<option>অ্যাসাইনমেন্ট সহায়তা</option>
+<option>অন্যান্য</option>
+</select>
+
+<label>বিষয় / শ্রেণি</label>
+<input name="subject" placeholder="যেমন: Chemistry, HSC 2027">
+
+<label>অতিরিক্ত তথ্য</label>
+<textarea name="details" rows="4" placeholder="কী প্রয়োজন লিখো"></textarea>
+
+<button type="submit">অর্ডারের তথ্য পাঠাও</button>
+</form>
+
+<p class="note">নোট: এই প্রাথমিক পেজটি এখনো অর্ডার সংরক্ষণ করে না। পরের ধাপে তথ্য জমা রাখার ব্যবস্থা যুক্ত করব।</p>
+</div>
+<script>
+document.getElementById("orderForm").addEventListener("submit",function(e){
+e.preventDefault();
+alert("ফর্মটি পরীক্ষা করা হয়েছে। অর্ডার এখনো জমা হয়নি—সংরক্ষণের ব্যবস্থা পরের ধাপে যুক্ত হবে।");
+});
+</script>
+</body>
+</html>
