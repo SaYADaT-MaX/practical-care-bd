@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practical Care BD — Admin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 18px;
+      background: #0b1220;
+      color: #edf4ff;
+      font-family: Arial, sans-serif;
+    }
+    main { max-width: 900px; margin: auto; }
+    .panel {
+      background: #151f32;
+      padding: 18px;
+      border-radius: 14px;
+      margin: 14px 0;
+    }
+    input, button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      margin: 6px 0;
+      border-radius: 8px;
+      border: 1px solid #35435b;
+      font-size: 16px;
+    }
+    input { background: #0b1220; color: white; }
+    button {
+      background: #14b8a6;
+      color: #06131b;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .reject { background: #fb7185; }
+    .muted { color: #a8b8d0; }
+    .order {
+      border: 1px solid #35435b;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+    .actions { display: flex; gap: 10px; }
+    .actions button { flex: 1; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+    #dashboard { display: none; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Practical Care BD</h1>
+  <p class="muted">Admin Order Dashboard</p>
+
+  <section id="login" class="panel">
+    <h2>Admin Login</h2>
+    <input id="password" type="password"
+      autocomplete="current-password" placeholder="Admin password">
+    <button id="loginBtn">Login</button>
+    <p id="loginMsg" role="status"></p>
+  </section>
+
+  <section id="dashboard">
+    <div class="panel">
+      <h2>অর্ডার ম্যানেজমেন্ট</h2>
+      <button id="refreshBtn">অর্ডার Refresh করো</button>
+      <button id="logoutBtn" style="background:#35435b;color:white">
+        Logout
+      </button>
+      <p id="status" role="status"></p>
+    </div>
+    <div id="orders"></div>
+  </section>
+</main>
+
+<script>
+const API = "https://practical-care-bd-server.onrender.com";
+let token = "";
+
+const $ = id => document.getElementById(id);
+
+async function request(path, options = {}) {
+  const response = await fetch(API + path, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: "Bearer " + token } : {}),
+      ...(options.headers || {})
+    }
+  });
+
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok || !result.success) {
+    if (response.status === 401 && token) logout();
+    throw new Error(result.message || "Request failed");
+  }
+  return result;
+}
+
+$("loginBtn").addEventListener("click", async () => {
+  $("loginMsg").textContent = "লগইন হচ্ছে...";
+  $("loginBtn").disabled = true;
+
+  try {
+    const result = await request("/api/admin/login", {
+      method: "POST",
+      body: JSON.stringify({ password: $("password").value })
+    });
+
+    token = result.token;
+    $("password").value = "";
+    $("login").style.display = "none";
+    $("dashboard").style.display = "block";
+    await loadOrders();
+  } catch (error) {
+    $("loginMsg").textContent = error.message;
+  } finally {
+    $("loginBtn").disabled = false;
+  }
+});
+
+async function loadOrders() {
+  $("status").textContent = "অর্ডার লোড হচ্ছে...";
+  $("orders").replaceChildren();
+
+  try {
+    const result = await request("/api/admin/orders");
+
+    if (!result.orders.length) {
+      $("status").textContent = "এখনো কোনো অর্ডার নেই।";
+      return;
+    }
+
+    $("status").textContent =
+      "মোট দেখানো অর্ডার: " + result.orders.length;
+
+    result.orders.forEach(order => {
+      const card = document.createElement("article");
+      card.className = "order";
+
+      const heading = document.createElement("h3");
+      heading.textContent = "অর্ডার #" + order.id;
+      card.append(heading);
+
+      const info = document.createElement("pre");
+      info.textContent = [
+        "নাম: " + (order.customer_name || ""),
+        "ফোন: " + (order.phone || ""),
+        "শ্রেণি: " + (order.class_level || ""),
+        "বিভাগ: " + (order.student_group || ""),
+        "বিষয়: " + JSON.stringify(order.subjects || []),
+        "লেখার সংখ্যা: " + (order.write_count ?? ""),
+        "জমার সংখ্যা: " + (order.submit_count ?? ""),
+        "ডেডলাইন: " + (order.deadline || ""),
+        "সময়: " + (order.duration || ""),
+        "ডেলিভারি: " + (order.delivery_method || ""),
+        "এলাকা: " + (order.area || ""),
+        "পেমেন্ট: " + (order.payment_status || ""),
+        "Trx ID: " + (order.trx_id || ""),
+        "বিস্তারিত: " + (order.details || ""),
+        "বর্তমান স্ট্যাটাস: " + (order.order_status || "")
+      ].join("\n");
+      card.append(info);
+
+      if (order.order_status === "pending") {
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const confirm = document.createElement("button");
+        confirm.textContent = "Confirm";
+        confirm.addEventListener("click", () =>
+          updateOrder(order.id, "confirmed", confirm)
+        );
+
+        const reject = document.createElement("button");
+        reject.textContent = "Reject";
+        reject.className = "reject";
+        reject.addEventListener("click", () =>
+          updateOrder(order.id, "rejected", reject)
+        );
+
+        actions.append(confirm, reject);
+        card.append(actions);
+      }
+
+      $("orders").append(card);
+    });
+  } catch (error) {
+    $("status").textContent = error.message;
+  }
+}
+
+async function updateOrder(id, status, button) {
+  const action = status === "confirmed" ? "Confirm" : "Reject";
+  if (!confirm("অর্ডার #" + id + " " + action + " করবে?")) return;
+
+  button.disabled = true;
+  try {
+    await request("/api/admin/orders/" + encodeURIComponent(id), {
+      method: "PATCH",
+      body: JSON.stringify({ status })
+    });
+    $("status").textContent = "অর্ডারের স্ট্যাটাস আপডেট হয়েছে।";
+    await loadOrders();
+  } catch (error) {
+    $("status").textContent = error.message;
+    button.disabled = false;
+  }
+}
+
+function logout() {
+  token = "";
+  $("dashboard").style.display = "none";
+  $("login").style.display = "block";
+  $("orders").replaceChildren();
+}
+
+$("refreshBtn").addEventListener("click", loadOrders);
+$("logoutBtn").addEventListener("click", logout);
+$("password").addEventListener("keydown", event => {
+  if (event.key === "Enter") $("loginBtn").click();
+});
+</script>
+</body>
+</html>
