@@ -594,6 +594,71 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  const orderForm = document.getElementById("practicalOrderForm");
+const quantityInput = document.getElementById("quantity");
+const totalPrice = document.getElementById("totalPrice");
+const deadlineInput = document.getElementById("deadline");
+
+// আজকের আগের তারিখ নির্বাচন বন্ধ
+const today = new Date();
+const localToday = new Date(
+  today.getTime() - today.getTimezoneOffset() * 60000
+).toISOString().slice(0, 10);
+
+deadlineInput.min = localToday;
+deadlineInput.value = localToday;
+
+function updateOrderTotal() {
+  const quantity = Number(quantityInput.value);
+  const valid = Number.isInteger(quantity) && quantity >= 1 && quantity <= 100;
+
+  totalPrice.textContent = valid
+    ? "৳" + (quantity * 20).toLocaleString("en-US")
+    : "সঠিক সংখ্যা দাও";
+}
+
+quantityInput.addEventListener("input", updateOrderTotal);
+updateOrderTotal();
+
+orderForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  if (!orderForm.reportValidity()) return;
+
+  const data = new FormData(orderForm);
+  const quantity = Number(data.get("quantity"));
+
+  if (!Number.isInteger(quantity) || quantity < 1 || quantity > 100) {
+    alert("১ থেকে ১০০টির মধ্যে প্র্যাকটিক্যালের সংখ্যা দাও।");
+    return;
+  }
+
+  const total = quantity * 20;
+
+  const subject = "Practical Care BD - New Order Request";
+  const body = [
+    "Practical Care BD - Order Request",
+    "",
+    "Name: " + data.get("customerName"),
+    "Class: " + data.get("classLevel"),
+    "Subject: " + data.get("subject"),
+    "Number of practicals: " + quantity,
+    "Estimated total: Tk " + total,
+    "Required date: " + data.get("deadline"),
+    "Preferred meeting area: " + data.get("meetupArea"),
+    "Contact: " + data.get("contactInfo"),
+    "Additional instructions: " + (data.get("details") || "None"),
+    "",
+    "Please confirm availability, price and handover arrangements."
+  ].join("\n");
+
+  const mailto =
+    "mailto:mdsayadathossain2007@gmail.com" +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.location.href = mailto;
+});
+</script>
 </body>
 </html>
