@@ -41,7 +41,7 @@ if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
   );
 }
 
-// Temporary admin sessions; expire after 8 hours.
+// Admin sessions expire after 8 hours.
 const adminSessions = new Map();
 const SESSION_DURATION = 8 * 60 * 60 * 1000;
 
@@ -52,7 +52,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Customer order submission
+// Customer submits an order.
 app.post("/api/orders", async (req, res) => {
   try {
     if (!supabase) {
@@ -109,43 +109,68 @@ app.post("/api/orders", async (req, res) => {
       });
     }
 
-    const { data, error } = await supabase
-      .from("practical_orders")
-      .insert([{
-        customer_name: customerName.trim(),
-        phone: phone.trim(),
-        class_level: classLevel,
-        student_group: studentGroup || null,
-        subjects,
-        write_count: writeCount,
-        submit_count: submitCount,
-        deadline,
-        duration: duration.trim(),
-        delivery_method: delivery.trim(),
-        area: area || null,
-        payment_status: "unverified",
-        trx_id: trxId || null,
-        details: details || null,
-        order_status: "pending"
-      }])
-      .select("id")
-      .single();
+    let data = null;
+    let lastError = null;
 
-    if (error) {
-      console.error("Order save failed:", error.message);
+    // Generate a unique random six-digit order number.
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const orderNumber = crypto.randomInt(100000, 1000000);
+
+      const result = await supabase
+        .from("practical_orders")
+        .insert([{
+          order_number: orderNumber,
+          customer_name: customerName.trim(),
+          phone: phone.trim(),
+          class_level: classLevel,
+          student_group: studentGroup || null,
+          subjects,
+          write_count: writeCount,
+          submit_count: submitCount,
+          deadline,
+          duration: duration.trim(),
+          delivery_method: delivery.trim(),
+          area: area || null,
+          payment_status: "unverified",
+          trx_id: trxId || null,
+          details: details || null,
+          order_status: "pending"
+        }])
+        .select("id, order_number")
+        .single();
+
+      if (!result.error) {
+        data = result.data;
+        break;
+      }
+
+      lastError = result.error;
+
+      // Retry only if the random order number already exists.
+      if (result.error.code !== "23505") {
+        break;
+      }
+    }
+
+    if (!data) {
+      console.error("Order save failed:", lastError?.message);
+
       return res.status(500).json({
         success: false,
-        message: "অর্ডার সংরক্ষণ করা যায়নি।"
+        message: "অর্ডার সংরক্ষণ করা যায়নি। আবার চেষ্টা করো।"
       });
     }
 
     return res.status(201).json({
       success: true,
       orderId: data.id,
+      orderNumber: data.order_number,
+      orderStatus: "pending",
       message: "অর্ডার গ্রহণ করা হয়েছে। নিশ্চিতকরণ বাকি।"
     });
   } catch (error) {
     console.error("Order error:", error.message);
+
     return res.status(500).json({
       success: false,
       message: "সমস্যা হয়েছে। আবার চেষ্টা করো।"
@@ -153,7 +178,67 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
-// Admin login
+// Customer checks order status using order number and phone.
+app.get("/api/orders/status", async (req, res) => {
+  try {
+    if (!supabase) {
+      return res.status(503).json({
+        success: false,
+        message: "Order service is not configured."
+      });
+    }
+
+    const orderNumber = String(
+      req.query.orderNumber || ""
+    ).trim();
+
+    const phone = String(req.query.phone || "").trim();
+
+    if (!/^\d{6}$/.test(orderNumber) || !phone) {
+      return res.status(400).json({
+        success: false,
+        message: "সঠিক Order Number ও ফোন নম্বর দাও।"
+      });
+    }
+
+    const { data, error } = await supabase
+      .from("practical_orders")
+      .select("order_number, order_status, payment_status, created_at")
+      .eq("order_number", Number(orderNumber))
+      .eq("phone", phone)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Status lookup failed:", error.message);
+
+      return res.status(500).json({
+        success: false,
+        message: "স্ট্যাটাস দেখা যাচ্ছে না। পরে চেষ্টা করো।"
+      });
+    }
+
+    if (!data) {
+      return res.status(404).json({
+        success: false,
+        message: "Order Number অথবা ফোন নম্বর মিলছে না।"
+      });
+    }
+
+    return res.json({
+      success: true,
+      order: data
+    });
+  } catch (error) {
+    console.error("Status error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "সমস্যা হয়েছে। আবার চেষ্টা করো।"
+    });
+  }
+});
+
+// Admin login.
 app.post("/api/admin/login", (req, res) => {
   if (!ADMIN_PASSWORD) {
     return res.status(503).json({
@@ -179,12 +264,16 @@ app.post("/api/admin/login", (req, res) => {
   }
 
   const token = crypto.randomBytes(32).toString("hex");
-  adminSessions.set(token, Date.now() + SESSION_DURATION);
+
+  adminSessions.set(
+    token,
+    Date.now() + SESSION_DURATION
+  );
 
   res.json({ success: true, token });
 });
 
-// Protect all admin API routes below
+// Protect admin API routes.
 function requireAdmin(req, res, next) {
   const header = req.headers.authorization || "";
   const token = header.startsWith("Bearer ")
@@ -195,6 +284,7 @@ function requireAdmin(req, res, next) {
 
   if (!token || !expiry || expiry < Date.now()) {
     adminSessions.delete(token);
+
     return res.status(401).json({
       success: false,
       message: "আবার Admin Login করো।"
@@ -204,7 +294,7 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-// View orders
+// Admin views orders.
 app.get("/api/admin/orders", requireAdmin, async (req, res) => {
   if (!supabase) {
     return res.status(503).json({
@@ -221,6 +311,7 @@ app.get("/api/admin/orders", requireAdmin, async (req, res) => {
 
   if (error) {
     console.error("Admin orders error:", error.message);
+
     return res.status(500).json({
       success: false,
       message: "অর্ডার লোড করা যায়নি।"
@@ -230,7 +321,7 @@ app.get("/api/admin/orders", requireAdmin, async (req, res) => {
   res.json({ success: true, orders: data });
 });
 
-// Confirm or reject an order
+// Admin confirms or rejects an order using its database ID.
 app.patch(
   "/api/admin/orders/:id",
   requireAdmin,
@@ -245,8 +336,10 @@ app.patch(
     const id = req.params.id;
     const status = req.body?.status;
 
-    if (!/^\d+$/.test(id) ||
-        !["confirmed", "rejected"].includes(status)) {
+    if (
+      !/^\d+$/.test(id) ||
+      !["confirmed", "rejected"].includes(status)
+    ) {
       return res.status(400).json({
         success: false,
         message: "অর্ডার ID বা স্ট্যাটাস সঠিক নয়।"
@@ -257,11 +350,12 @@ app.patch(
       .from("practical_orders")
       .update({ order_status: status })
       .eq("id", id)
-      .select("id, order_status")
+      .select("id, order_number, order_status")
       .maybeSingle();
 
     if (error) {
       console.error("Order status error:", error.message);
+
       return res.status(500).json({
         success: false,
         message: "স্ট্যাটাস পরিবর্তন করা যায়নি।"
