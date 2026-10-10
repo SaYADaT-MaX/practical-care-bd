@@ -435,120 +435,173 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">PLACE YOUR ORDER</span>
-      <h2>প্র্যাকটিক্যাল অর্ডার করো</h2>
-      <p>তথ্য পূরণ করো, মোট মূল্য দেখো এবং অর্ডারের বিস্তারিত পাঠাও।</p>
+      <h2>প্র্যাকটিক্যাল অর্ডার ক্যালকুলেটর</h2>
+      <p>বিষয় নির্বাচন করো, সংখ্যা দাও এবং মোট মূল্য দেখো।</p>
     </div>
 
-    <div class="order-layout">
-      <form id="practicalOrderForm" class="order-form">
-        <div class="form-field">
-          <label for="customerName">তোমার নাম *</label>
-          <input id="customerName" name="customerName"
-                 required maxlength="80" autocomplete="name"
-                 placeholder="তোমার নাম লিখো">
-        </div>
+    <div class="order-form">
+      <label for="orderClass">তোমার শ্রেণি</label>
+      <select id="orderClass">
+        <option value="HSC">HSC</option>
+        <option value="SSC">SSC</option>
+      </select>
 
-        <div class="form-field">
-          <label for="classLevel">শ্রেণি *</label>
-          <select id="classLevel" name="classLevel" required>
-            <option value="">শ্রেণি নির্বাচন করো</option>
-            <option>SSC</option>
-            <option>HSC</option>
-          </select>
-        </div>
+      <h3>প্রয়োজনীয় বিষয় নির্বাচন করো</h3>
+      <p>একাধিক বিষয় নির্বাচন করতে পারবে।</p>
 
-        <div class="form-field">
-          <label for="subject">বিষয় *</label>
-          <select id="subject" name="subject" required>
-            <option value="">বিষয় নির্বাচন করো</option>
-            <option>পদার্থবিজ্ঞান</option>
-            <option>রসায়ন</option>
-            <option>জীববিজ্ঞান</option>
-            <option>ICT</option>
-            <option>অন্যান্য</option>
-          </select>
-        </div>
+      <div id="subjectList"></div>
 
-        <div class="form-field">
-          <label for="quantity">কতটি প্র্যাকটিক্যাল? *</label>
-          <input id="quantity" name="quantity" type="number"
-                 min="1" max="100" step="1" value="1" required>
-        </div>
+      <div class="order-total">
+        <p>মোট প্র্যাকটিক্যাল: <strong id="totalCount">0</strong> টি</p>
+        <h2>মোট মূল্য: <span id="totalPrice">৳০</span></h2>
+        <small>প্রতি প্র্যাকটিক্যাল ৳২০</small>
+      </div>
 
-        <div class="form-field">
-          <label for="deadline">কবে প্রয়োজন? *</label>
-          <input id="deadline" name="deadline" type="date" required>
-        </div>
+      <button type="button" class="btn order-submit"
+        id="placeOrderBtn">
+        অর্ডার করতে এগিয়ে যাও ↗
+      </button>
 
-        <div class="form-field">
-          <label for="meetupArea">কোন এলাকায় হাতে নিতে সুবিধা? *</label>
-          <input id="meetupArea" name="meetupArea"
-                 required maxlength="120"
-                 placeholder="শুধু এলাকা বা পরিচিত স্থান">
-        </div>
-
-        <div class="form-field">
-          <label for="contactInfo">যোগাযোগের তথ্য *</label>
-          <input id="contactInfo" name="contactInfo"
-                 required maxlength="100"
-                 placeholder="ইমেইল বা যোগাযোগের নম্বর">
-        </div>
-
-        <div class="form-field">
-          <label for="details">অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label>
-          <textarea id="details" name="details" rows="3"
-                    maxlength="500"
-                    placeholder="প্র্যাকটিক্যালের নাম বা বিশেষ নির্দেশনা"></textarea>
-        </div>
-
-        <div class="order-total">
-          <span>আনুমানিক মোট মূল্য</span>
-          <strong id="totalPrice">৳২০</strong>
-          <small>প্রতি প্র্যাকটিক্যাল ৳২০</small>
-        </div>
-
-        <button type="submit" class="btn order-submit">
-          ইমেইলে অর্ডারের খসড়া তৈরি করো ↗
-        </button>
-
-        <a class="btn btn-outline order-submit"
-           href="https://docs.google.com/forms/d/e/1FAIpQLSe-AJA7npREu5w030IDLTkrLDrzhnI2oiyGJREcRtixc6csow/viewform?usp=preview"
-           target="_blank" rel="noopener noreferrer">
-          Google Form খুলুন
-        </a>
-
-        <p class="form-note">
-          অর্ডার পাঠানোর আগে মূল্য, ডেডলাইন ও ডেলিভারির স্থান নিশ্চিত করা হবে।
-          ফর্মে নিজের পাসওয়ার্ড বা অপ্রয়োজনীয় ব্যক্তিগত তথ্য দিও না।
-        </p>
-      </form>
-
-      <aside class="order-summary">
-        <div class="summary-icon">✍️</div>
-        <h3>Practical Care BD</h3>
-        <p>SSC ও HSC শিক্ষার্থীদের হাতে লেখা প্র্যাকটিক্যাল সার্ভিস।</p>
-
-        <div class="summary-row">
-          <span>প্রতি প্র্যাকটিক্যাল</span>
-          <strong>৳২০</strong>
-        </div>
-        <div class="summary-row">
-          <span>ডেলিভারি</span>
-          <strong>সরাসরি হাতে</strong>
-        </div>
-        <div class="summary-row">
-          <span>অর্ডার স্ট্যাটাস</span>
-          <strong>নিশ্চিতকরণ বাকি</strong>
-        </div>
-
-        <div class="notice">
-          অর্ডার গ্রহণের আগে দেখা করার নিরাপদ স্থান ও সময় দুপক্ষের সম্মতিতে
-          ঠিক করা হবে।
-        </div>
-      </aside>
+      <p class="form-note" id="orderMessage">
+        পরের ধাপে Google Form-এ অর্ডার জমা দেবে।
+      </p>
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  const subjects = [
+    "পদার্থবিজ্ঞান ১ম পত্র",
+    "পদার্থবিজ্ঞান ২য় পত্র",
+    "রসায়ন ১ম পত্র",
+    "রসায়ন ২য় পত্র",
+    "জীববিজ্ঞান ১ম পত্র",
+    "জীববিজ্ঞান ২য় পত্র",
+    "ICT"
+  ];
+
+  const list = document.getElementById("subjectList");
+  const totalCount = document.getElementById("totalCount");
+  const totalPrice = document.getElementById("totalPrice");
+  const orderMessage = document.getElementById("orderMessage");
+
+  subjects.forEach(function (subject, index) {
+    const row = document.createElement("div");
+    row.className = "form-field";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "subject" + index;
+    checkbox.className = "subject-check";
+
+    const label = document.createElement("label");
+    label.htmlFor = checkbox.id;
+    label.textContent = subject;
+
+    const quantity = document.createElement("input");
+    quantity.type = "number";
+    quantity.min = "1";
+    quantity.max = "100";
+    quantity.step = "1";
+    quantity.value = "1";
+    quantity.disabled = true;
+    quantity.className = "subject-quantity";
+    quantity.setAttribute("aria-label", subject + " প্র্যাকটিক্যালের সংখ্যা");
+
+    checkbox.addEventListener("change", function () {
+      quantity.disabled = !checkbox.checked;
+      updateTotal();
+    });
+
+    quantity.addEventListener("input", updateTotal);
+
+    row.appendChild(checkbox);
+    row.appendChild(label);
+    row.appendChild(quantity);
+    list.appendChild(row);
+  });
+
+  function updateTotal() {
+    let count = 0;
+    let invalid = false;
+
+    document.querySelectorAll("#subjectList .form-field").forEach(function (row) {
+      const checkbox = row.querySelector(".subject-check");
+      const quantity = row.querySelector(".subject-quantity");
+
+      if (checkbox.checked) {
+        const number = Number(quantity.value);
+
+        if (!Number.isInteger(number) || number < 1 || number > 100) {
+          invalid = true;
+        } else {
+          count += number;
+        }
+      }
+    });
+
+    totalCount.textContent = invalid ? "—" : count;
+    totalPrice.textContent = invalid
+      ? "সংখ্যা ঠিক করো"
+      : "৳" + (count * 20).toLocaleString("en-US");
+
+    return { count, invalid };
+  }
+
+  document.getElementById("placeOrderBtn").addEventListener("click", function () {
+    const result = updateTotal();
+    const chosen = [];
+
+    document.querySelectorAll("#subjectList .form-field").forEach(function (row) {
+      const checkbox = row.querySelector(".subject-check");
+      const quantity = row.querySelector(".subject-quantity");
+
+      if (checkbox.checked) {
+        const number = Number(quantity.value);
+        if (Number.isInteger(number) && number >= 1 && number <= 100) {
+          chosen.push(checkbox.nextElementSibling.textContent + ": " + number + " টি");
+        }
+      }
+    });
+
+    if (chosen.length === 0) {
+      orderMessage.textContent = "অর্ডারের জন্য অন্তত একটি বিষয় নির্বাচন করো।";
+      return;
+    }
+
+    if (result.invalid) {
+      orderMessage.textContent = "নির্বাচিত বিষয়গুলোর সংখ্যা ১ থেকে ১০০-এর মধ্যে দাও।";
+      return;
+    }
+
+    const orderDetails = [
+      "শ্রেণি: " + document.getElementById("orderClass").value,
+      ...chosen,
+      "মোট প্র্যাকটিক্যাল: " + result.count + " টি",
+      "আনুমানিক মূল্য: ৳" + (result.count * 20)
+    ].join("\n");
+
+    try {
+      sessionStorage.setItem("practicalCareOrder", orderDetails);
+    } catch (error) {
+      // Storage বন্ধ থাকলেও Google Form খোলা যাবে।
+    }
+
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSe-AJA7npREu5w030IDLTkrLDrzhnI2oiyGJREcRtixc6csow/viewform?usp=preview",
+      "_blank"
+    );
+
+    orderMessage.textContent =
+      "Google Form খুলেছে। সেখানে অর্ডার জমা দাও। মোট মূল্য: ৳" +
+      (result.count * 20) +
+      "। ক্যালকুলেটরের তথ্য ফর্মে নিজে পূরণ করতে হবে।";
+  });
+
+  updateTotal();
+})();
+</script>
 
     <section id="contact">
       <div class="container">
