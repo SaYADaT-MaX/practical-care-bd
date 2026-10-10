@@ -1,184 +1,504 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0754c7">
-<title>Practical Care BD | Your Study Partner</title>
-<style>
-*{box-sizing:border-box}
-:root{--blue:#0866e9;--navy:#08264e;--light:#edf6ff;--text:#152c4d}
-body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;color:var(--text);background:#fff;line-height:1.65}
-a{text-decoration:none;color:inherit}
-.top{background:#063a80;color:white;padding:8px 5%;font-size:12px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
-header{background:white;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 5%;box-shadow:0 3px 14px #0b326510;position:sticky;top:0;z-index:5}
-.brand{font-size:23px;font-weight:800;color:var(--navy);line-height:1.2}
-.brand span{color:var(--blue)}
-.tagline{font-size:12px;color:#73839a}
-nav{display:flex;align-items:center;gap:19px;flex-wrap:wrap;font-size:14px}
-nav a:hover{color:var(--blue)}
-.orderbtn,.primary{background:var(--blue);color:white;padding:11px 18px;border-radius:25px;font-weight:bold;display:inline-block}
-.hero{margin:0;background:linear-gradient(110deg,#eef7ff,#dcecff);overflow:hidden}
-.hero-inner{max-width:1180px;margin:auto;padding:55px 5%;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:28px;min-height:370px}
-.eyebrow{background:#d1e7ff;color:#0754b8;border-radius:20px;padding:6px 12px;font-size:13px;display:inline-block}
-h1{font-size:clamp(34px,5vw,51px);line-height:1.14;margin:18px 0;color:var(--navy)}
-h1 span{color:var(--blue)}
-.hero p{font-size:17px;max-width:600px}
-.checks{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0;font-size:13px}
-.checks span:before{content:"✓";background:var(--blue);color:white;border-radius:50%;padding:1px 5px;margin-right:6px}
-.hero-art{min-height:250px;border-radius:25px;background:linear-gradient(140deg,#c3e1ff,#f7fbff);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px}
-.book-art{font-size:85px;line-height:1.4}
-.book-art strong{display:block;font-size:23px;color:var(--navy)}
-.book-art small{font-size:14px;color:#48678b}
-.section{max-width:1180px;margin:0 auto;padding:38px 5%}
-.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
-h2{font-size:26px;margin:0;color:var(--navy)}
-.sub{color:#72839a;margin:3px 0 20px}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.card{padding:21px;border-radius:13px;border:1px solid #e5edf7;box-shadow:0 4px 14px #18395d0a;background:white}
-.card:nth-child(1){background:#f0f7ff}
-.card:nth-child(2){background:#effcf5}
-.card:nth-child(3){background:#f7f0ff}
-.card:nth-child(4){background:#fff8ed}
-.ico{width:45px;height:45px;display:grid;place-items:center;background:#d7eaff;border-radius:12px;font-size:25px}
-.card h3{font-size:17px;margin:13px 0 5px}
-.card p{font-size:14px;color:#586c84;margin:0 0 14px}
-.circle{display:inline-grid;place-items:center;background:var(--blue);color:white;width:34px;height:34px;border-radius:50%}
-.posts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.post{border:1px solid #e5edf7;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #18395d0c}
-.postpic{height:120px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#d7eaff,#edf6ff)}
-.postbody{padding:15px}
-.chip{font-size:11px;background:#0871ed;color:white;border-radius:5px;padding:3px 8px}
-.post h3{font-size:16px;line-height:1.5;margin:10px 0}
-.post p{font-size:12px;color:#8491a2}
-.about{background:#edf6ff;border-radius:16px;padding:25px;display:grid;grid-template-columns:.7fr 1.3fr;gap:24px;align-items:center}
-.about-art{text-align:center;font-size:76px}
-.about p{font-size:14px}
-.quote{background:white;padding:17px;border-radius:12px;color:#3c5b82;font-size:15px}
-footer{background:#06254a;color:white;padding:35px 5% 20px}
-.footer-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
-footer a{display:block;font-size:13px;color:#d5e4f9;margin:5px 0}
-footer p{font-size:13px;color:#d5e4f9}
-.copy{border-top:1px solid #ffffff25;margin-top:25px;padding-top:15px;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-@media(max-width:850px){
- header{align-items:flex-start;flex-direction:column;gap:12px}
- nav{gap:14px}
- .hero-inner{grid-template-columns:1fr;padding:38px 6%}
- .hero-art{min-height:180px}
- .cards,.posts{grid-template-columns:repeat(2,minmax(0,1fr))}
- .about{grid-template-columns:1fr}
- .about-art{font-size:55px}
-}
-@media(max-width:420px){
- .brand{font-size:21px}
- nav{gap:10px;font-size:13px}
- .cards,.posts{gap:10px}
- .card{padding:14px}
- .card h3,.post h3{font-size:14px}
- .section{padding:28px 4%}
- h2{font-size:22px}
- .hero p{font-size:15px}
- .book-art{font-size:65px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Practical Care BD — SSC ও HSC শিক্ষার্থীদের জন্য হাতে লেখা প্র্যাকটিক্যাল খাতা প্রস্তুত ও লেখার সহায়তা।">
+  <title>Practical Care BD | Practical Writing Service</title>
+
+  <style>
+    :root {
+      --bg: #080d18;
+      --panel: #101a2b;
+      --panel2: #121f33;
+      --text: #f4f7ff;
+      --muted: #a9b6cc;
+      --cyan: #67e8f9;
+      --blue: #648bff;
+      --border: rgba(148, 177, 220, .17);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Noto Sans Bengali",
+                   "Nirmala UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 80% 0%, #12264a 0%, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1100px, 92%); margin: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 13, 24, .92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 850;
+      letter-spacing: -.5px;
+    }
+
+    .brand span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      min-height: 46px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), #8da5ff);
+      color: #06101d;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform .2s, filter .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .menu-btn {
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 20px;
+    }
+
+    .hero { padding: 82px 0 64px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--cyan);
+      border: 1px solid rgba(103, 232, 249, .25);
+      background: rgba(103, 232, 249, .07);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5.5vw, 62px);
+      line-height: 1.18;
+      letter-spacing: -1.6px;
+      margin: 20px 0;
+    }
+
+    h1 span {
+      background: linear-gradient(100deg, var(--cyan), #9baeff);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .lead { color: var(--muted); font-size: 17px; max-width: 620px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+
+    .hero-card {
+      background: linear-gradient(145deg, #14233b, #0d1422);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 28px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+    }
+
+    .notebook {
+      min-height: 205px;
+      border-radius: 17px;
+      padding: 20px;
+      color: #152238;
+      background: repeating-linear-gradient(
+        to bottom, #f5f7fb 0px, #f5f7fb 29px, #d5e0f1 30px
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notebook:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 35px;
+      border-left: 2px solid #f39a9a;
+    }
+
+    .notebook-content { margin-left: 28px; position: relative; }
+    .notebook-content strong { font-size: 19px; }
+    .notebook-content p { margin: 7px 0; font-size: 13px; }
+    .hero-card h3 { margin-bottom: 4px; }
+    .hero-card > p { color: var(--muted); margin-top: 0; font-size: 14px; }
+
+    section { padding: 64px 0; }
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 32px; }
+    .section-head h2 { font-size: clamp(27px, 4vw, 38px); margin: 10px 0; }
+    .section-head p { color: var(--muted); margin: 0; }
+
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .service, .info-card, .price-card {
+      background: linear-gradient(150deg, var(--panel2), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .service:hover, .info-card:hover, .price-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .48);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(103, 232, 249, .09);
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .service h3, .info-card h3 { margin: 0 0 8px; font-size: 18px; }
+    .service p, .info-card p { color: var(--muted); font-size: 14px; margin: 0; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .steps { list-style: none; padding: 0; margin: 18px 0 0; }
+    .steps li { display: flex; gap: 12px; margin: 15px 0; color: var(--muted); }
+    .step-no {
+      flex: 0 0 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: rgba(103, 232, 249, .12);
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .price-card { text-align: center; }
+    .price-card .price { font-size: 26px; font-weight: 850; color: var(--cyan); }
+    .price-card p { color: var(--muted); font-size: 14px; }
+
+    .order-panel {
+      text-align: center;
+      padding: 42px 24px;
+      border-radius: 25px;
+      border: 1px solid rgba(103, 232, 249, .24);
+      background:
+        radial-gradient(ellipse at top, rgba(100,139,255,.16), transparent 60%),
+        var(--panel);
+    }
+
+    .order-panel h2 { font-size: clamp(27px, 4vw, 40px); margin: 0 0 12px; }
+    .order-panel p { color: var(--muted); max-width: 650px; margin: 0 auto 22px; }
+
+    .notice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero { padding-top: 55px; }
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-card { max-width: 520px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: #0b1220;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .nav > .btn { display: none; }
+    }
+
+    @media (max-width: 430px) {
+      .grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -.8px; }
+      .lead { font-size: 15px; }
+      .hero-actions .btn { width: 100%; }
+      section { padding: 48px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
+
 <body>
-<div class="top">
- <span>🎓 HSC 2027 &nbsp; | &nbsp; Science Group &nbsp; | &nbsp; Learn Today, Build Tomorrow</span>
- <span>📘 Practical Care BD</span>
-</div>
-<header>
- <a href="#home">
-  <div class="brand">📘 Practical <span>Care BD</span></div>
-  <div class="tagline">Your Study Partner</div>
- </a>
- <nav>
-  <a href="#home">⌂ Home</a>
-  <a href="#services">▤ Study Materials</a>
-  <a href="#assignments">▣ Assignments</a>
-  <a href="#about">♟ About</a>
-  <a href="#contact">✉ Contact</a>
-  <a class="orderbtn" href="#order">🛒 Order Now</a>
- </nav>
-</header>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">Practical <span>Care BD</span></a>
 
-<main>
-<section class="hero" id="home">
- <div class="hero-inner">
-  <div>
-   <span class="eyebrow">🎓 Welcome to Practical Care BD</span>
-   <h1>Study Smarter,<br><span>Not Harder</span></h1>
-   <p>HSC 2027 বিজ্ঞান বিভাগের শিক্ষার্থীদের জন্য প্রয়োজনীয় নোট, সাজেশন, অ্যাসাইনমেন্ট ও পড়াশোনার সহায়তা।</p>
-   <div class="checks">
-    <span>Quality Notes</span><span>MCQ Practice</span><span>Assignment Help</span>
-   </div>
-   <a class="primary" href="#services">Explore Now →</a>
-  </div>
-  <div class="hero-art">
-   <div class="book-art">📚 ☕<strong>Better Notes</strong><strong>Better Future</strong><small>Learn • Practice • Progress</small></div>
-  </div>
- </div>
-</section>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">হোম</a>
+        <a href="#services">সার্ভিস</a>
+        <a href="#process">কীভাবে কাজ করে</a>
+        <a href="#pricing">মূল্য</a>
+        <a href="#contact">যোগাযোগ</a>
+      </nav>
 
-<section class="section" id="services">
- <div class="section-heading"><h2>▣ Our Services</h2><a href="#services">View All →</a></div>
- <p class="sub">তোমার পড়াশোনার প্রতিটি ধাপে আমরা আছি তোমার সাথে!</p>
- <div class="cards">
-  <article class="card"><div class="ico">📘</div><h3>HSC Notes</h3><p>Physics, Chemistry, Biology, Math, ICT</p><a class="circle" href="#order">→</a></article>
-  <article class="card"><div class="ico">☑️</div><h3>MCQ & Practice</h3><p>Board ও University Past Questions</p><a class="circle" href="#order">→</a></article>
-  <article class="card" id="assignments"><div class="ico">📄</div><h3>Assignments</h3><p>Chapter-wise ও Weekly Practice</p><a class="circle" href="#order">→</a></article>
-  <article class="card"><div class="ico">🔗</div><h3>Study Resources</h3><p>App, Website, PDF & More</p><a class="circle" href="#contact">→</a></article>
- </div>
-</section>
+      <a class="btn" href="#order">অর্ডার করো ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="মেনু খোলো"
+              aria-expanded="false">☰</button>
+    </div>
+  </header>
 
-<section class="section">
- <div class="section-heading"><h2>⭐ Latest Posts</h2><a href="#contact">View All Posts →</a></div>
- <p class="sub">সর্বশেষ আপডেট, নোট ও গুরুত্বপূর্ণ তথ্য</p>
- <div class="posts">
-  <article class="post"><div class="postpic">🧪</div><div class="postbody"><span class="chip">Chemistry</span><h3>মৌলের পর্যায়বৃত্ত ধর্ম — HSC প্রস্তুতি</h3><p>📅 Study Notes · Chemistry</p></div></article>
-  <article class="post"><div class="postpic">🧬</div><div class="postbody"><span class="chip">Biology</span><h3>DNA Sequencing — সহজ ব্যাখ্যা</h3><p>📅 Biology · Study Notes</p></div></article>
-  <article class="post"><div class="postpic">📐</div><div class="postbody"><span class="chip">Physics</span><h3>পদার্থবিজ্ঞান — অধ্যায়ভিত্তিক প্রস্তুতি</h3><p>📅 Physics · Study Notes</p></div></article>
-  <article class="post"><div class="postpic">💻</div><div class="postbody"><span class="chip">ICT</span><h3>HSC ICT — HTML Practice</h3><p>📅 ICT · Practice</p></div></article>
- </div>
-</section>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">✦ SSC & HSC PRACTICAL SERVICE</span>
+          <h1>তোমার Practical খাতা,<br><span>সুন্দর হাতে লেখা।</span></h1>
+          <p class="lead">
+            Practical Care BD-তে পাবে প্র্যাকটিক্যাল খাতা সুন্দরভাবে
+            হাতে লেখার সহায়তা। বিষয়, প্র্যাকটিক্যালের সংখ্যা ও ডেডলাইন
+            জানিয়ে অর্ডারের বিস্তারিত পাঠাও।
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#order">এখনই অর্ডার করো →</a>
+            <a class="btn btn-outline" href="#services">সার্ভিস দেখো</a>
+          </div>
+        </div>
 
-<section class="section" id="about">
- <div class="about">
-  <div class="about-art">🎓📚</div>
-  <div><h2>♟ About Practical Care BD</h2>
-   <p>Practical Care BD হলো HSC 2027 বিজ্ঞান বিভাগের শিক্ষার্থীদের পড়াশোনার সহায়ক একটি উদ্যোগ। এখানে নোট, অনুশীলন, অ্যাসাইনমেন্ট ও প্রয়োজনীয় স্টাডি রিসোর্স সুন্দরভাবে সাজিয়ে দেওয়ার লক্ষ্য নিয়ে কাজ করা হচ্ছে।</p>
-   <a class="primary" href="#contact">Learn More →</a>
-  </div>
-  <div class="quote">❝ স্বপ্ন দেখো, পরিশ্রম করো, সফলতা আসবেই। ❞<br><small>— Practical Care BD</small></div>
- </div>
-</section>
-<section class="section" id="order">
-  <h2>🛒 Order Now</h2>
-  <p class="sub">
-    তোমার প্রয়োজনীয় নোট বা প্র্যাকটিক্যাল অর্ডার করতে নিচের বাটনে চাপ দাও।
-  </p>
+        <div class="hero-card">
+          <div class="notebook">
+            <div class="notebook-content">
+              <strong>Practical Record</strong>
+              <p>Experiment / Practical No.</p>
+              <p>Objective: __________________</p>
+              <p>Materials: __________________</p>
+              <p>Procedure: __________________</p>
+              <p>Observation: ________________</p>
+            </div>
+          </div>
+          <h3>পরিপাটি লেখা, গুছানো খাতা</h3>
+          <p>তোমার শিক্ষক বা প্রতিষ্ঠানের নির্দেশনা অনুযায়ী কাজের বিস্তারিত জানাও।</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="notice card">
-    <div class="ico">📝</div>
-    <h3>অনলাইনে অর্ডার করো</h3>
-    <p>
-      অর্ডার ফর্মে গিয়ে প্রয়োজনীয় তথ্য পূরণ করে তোমার অর্ডার জমা দাও।
-    </p>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">OUR SERVICES</span>
+          <h2>কোন প্র্যাকটিক্যাল লিখতে হবে?</h2>
+          <p>SSC ও HSC-এর বিষয় এবং কাজের পরিমাণ জানিয়ে অর্ডারের জন্য যোগাযোগ করো।</p>
+        </div>
 
-    <a class="primary" href="/order.html">
-      🛒 অর্ডার করতে এখানে চাপ দাও →
-    </a>
-  </div>
-</section>
-</main>
+        <div class="grid">
+          <article class="service">
+            <div class="service-icon">⚗️</div>
+            <h3>রসায়ন</h3>
+            <p>Chemistry practical খাতা হাতে লেখার সার্ভিস।</p>
+          </article>
 
-<footer id="contact">
- <div class="footer-grid">
-  <div><div class="brand" style="color:white">📘 Practical Care BD</div><p>Your Study Partner</p><p>একসাথে শিখি, একসাথে এগিয়ে যাই।</p></div>
-  <div><strong>Quick Links</strong><a href="#home">⌂ Home</a><a href="#services">▤ Study Materials</a><a href="#assignments">▣ Assignments</a><a href="#about">About</a></div>
-  <div><strong>Contact Info</strong><a href="mailto:practicalcarebd@gmail.com">✉ practicalcarebd@gmail.com</a><p>📍 Bangladesh</p></div>
- </div>
- <div class="copy"><span>© 2026 Practical Care BD. All rights reserved.</span><span>Learn Today, Build Tomorrow</span></div>
-</footer>
+          <article class="service">
+            <div class="service-icon">🔭</div>
+            <h3>পদার্থবিজ্ঞান</h3>
+            <p>Physics practical ও প্রয়োজনীয় চিত্রের কাজের বিস্তারিত জানাও।</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">🧬</div>
+            <h3>জীববিজ্ঞান</h3>
+            <p>Biology practical এবং প্রাসঙ্গিক ডায়াগ্রামের কাজ।</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon">💻</div>
+            <h3>ICT ও অন্যান্য</h3>
+            <p>ICT বা অন্য বিষয়ের কাজ নেওয়া যাবে কি না, আগে নিশ্চিত করো।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container two-col">
+        <article class="info-card">
+          <span class="eyebrow">HOW IT WORKS</span>
+          <h3 style="margin-top:14px">অর্ডার করার নিয়ম</h3>
+          <ol class="steps">
+            <li><span class="step-no">1</span><span>অর্ডার ফর্মে SSC/HSC ও বিষয় নির্বাচন করো।</span></li>
+            <li><span class="step-no">2</span><span>কতটি প্র্যাকটিক্যাল, ডেডলাইন ও প্রয়োজনীয় নির্দেশনা জানাও।</span></li>
+            <li><span class="step-no">3</span><span>কাজের পরিমাণ অনুযায়ী মূল্য ও ডেলিভারি আগে নিশ্চিত করো।</span></li>
+            <li><span class="step-no">4</span><span>সবকিছু ঠিক হলে হাতে লেখা খাতা দেওয়ার ব্যবস্থা নিশ্চিত করো।</span></li>
+          </ol>
+        </article>
+
+        <article class="info-card" id="pricing">
+          <span class="eyebrow">CLEAR PRICING</span>
+          <h3 style="margin-top:14px">প্রতি প্র্যাকটিক্যাল অনুযায়ী মূল্য</h3>
+          <p>
+            দাম নির্ভর করবে বিষয়, পৃষ্ঠার সংখ্যা, চিত্র এবং কাজের সময়ের ওপর।
+            অর্ডার নিশ্চিত করার আগে মোট মূল্য জানিয়ে দেওয়া হবে।
+          </p>
+          <div class="notice">
+            <strong style="color:var(--text)">মনে রাখবে:</strong>
+            এই সাইটে এখনো নির্দিষ্ট মূল্য যোগ করা হয়নি।
+            নিজের নির্ধারিত রেট ঠিক হলে এখানে প্রকাশ করতে পারবে।
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="container">
+        <div class="order-panel">
+          <span class="eyebrow">PLACE AN ORDER</span>
+          <h2>তোমার প্র্যাকটিক্যালের অর্ডার দাও</h2>
+          <p>
+            বিষয়, প্র্যাকটিক্যালের সংখ্যা ও জমা দেওয়ার তারিখ প্রস্তুত রাখো।
+            ফর্ম পাঠানোর পর অর্ডার ও মূল্য নিশ্চিত না হওয়া পর্যন্ত কাজ
+            নিশ্চিত হয়েছে ধরে নিও না।
+          </p>
+          <a class="btn" id="orderBtn"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSe-AJA7npREu5w030IDLTkrLDrzhnI2oiyGJREcRtixc6csow/viewform?usp=preview"
+             target="_blank" rel="noopener noreferrer">
+            Google Form খুলে অর্ডার করো ↗
+          </a>
+          <div class="notice">
+            শিক্ষকের নির্দেশনা অনুযায়ী সঠিক তথ্য দাও। পরীক্ষার ফলাফল,
+            পর্যবেক্ষণ বা অন্য তথ্য বানিয়ে না দিয়ে বাস্তব কাজ ও
+            অনুমোদিত নির্দেশনা অনুসরণ করো।
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">CONTACT</span>
+          <h2>কোনো প্রশ্ন আছে?</h2>
+          <p>অর্ডার দেওয়ার আগে বিষয়, মূল্য ও ডেলিভারির সময় নিশ্চিত করে নাও।</p>
+          <div class="contact-links">
+            <a class="btn btn-outline" href="mailto:practicalcarebd@gmail.com">
+              ✉ ইমেইল করো
+            </a>
+            <a class="btn btn-outline" href="#order">অর্ডার ফর্ম</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <a class="brand" href="#home">Practical <span>Care BD</span></a>
+      <p>© <span id="year"></span> Practical Care BD. All rights reserved.</p>
+      <p>SSC & HSC Practical Writing Service</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
