@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html><html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practical Care BD | Practical Writing Service</title>
-<meta name="description" content="SSC ও HSC শিক্ষার্থীদের প্র্যাকটিক্যাল লেখার সহায়তা। Practical Care BD-তে অর্ডার করুন।">
-
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
+<meta name="description" content="SSC ও HSC শিক্ষার্থীদের প্র্যাকটিক্যাল লেখার সহায়তা। Practical Care BD-তে অর্ডার করুন।"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
 :root {
   --bg:#04101f;
   --card:#081b31;
@@ -93,6 +88,32 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 .status-pending{color:#ffd166}
 .status-confirmed{color:#83ffae}
 .status-rejected{color:#ff9292}
+
+/* Founder profile and full, uncropped photo */
+.founder-card{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+.founder-photo-wrap{
+  flex:0 0 230px;
+  width:230px;
+  text-align:center;
+}
+.founder-photo{
+  display:block;
+  width:100%;
+  max-width:230px;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+  border:2px solid var(--blue);
+  border-radius:14px;
+  margin:0 auto;
+}
+.founder-info{flex:1;min-width:0}
+.founder-info h3{font-size:24px}
+.founder-role{color:var(--blue);font-weight:700;margin-bottom:0}
 @media(max-width:760px){
   header{align-items:flex-start;flex-direction:column}
   nav{gap:12px}
@@ -100,12 +121,16 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
   .grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
+  .founder-card{flex-direction:column;align-items:center;text-align:center}
+  .founder-photo-wrap{flex:initial;width:min(100%,280px)}
+  .founder-photo{max-width:280px}
+  .founder-info{width:100%}
 }
-@media(max-width:390px){.subjects{grid-template-columns:1fr}}
-</style>
-</head>
-
-<body>
+@media(max-width:390px){
+  .subjects{grid-template-columns:1fr}
+  .card{padding:16px}
+}
+</style></head><body>
 <header>
   <a class="logo" href="#home">📘 Practical Care BD</a>
   <nav>
@@ -116,31 +141,24 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
     <a href="#contact">যোগাযোগ</a>
   </nav>
   <a class="btn" href="#order">অর্ডার করুন</a>
-</header>
-
-<main>
-<div class="container">
-
-  <section class="hero" id="home">
+</header><main>
+<div class="container">  <section class="hero" id="home">
     <div>
-      <div class="tag">SSC & HSC Practical Writing Support</div>
+      <div class="tag">SSC &amp; HSC Practical Writing Support</div>
       <h1>তোমার প্র্যাকটিক্যাল খাতা,<br><span class="highlight">সুন্দরভাবে প্রস্তুত করার সহায়তা!</span></h1>
       <p>Practical Care BD-তে তোমার প্র্যাকটিক্যালের চাহিদা, বিষয়, জমা দেওয়ার সময় এবং যোগাযোগের তথ্য দিয়ে অর্ডার পাঠাও। অর্ডার গ্রহণ ও সময় নিশ্চিত করার পর কাজের ব্যবস্থা করা হবে।</p>
       <a class="btn" href="#order">এখনই অর্ডার দাও →</a>
       <a class="btn" href="#track" style="margin-left:6px">স্ট্যাটাস দেখো</a>
-    </div>
+    </div><div class="card hero-card">
+  <h2>সহজ অর্ডার প্রক্রিয়া</h2>
+  <p>১. বিষয় ও পত্র নির্বাচন করো।</p>
+  <p>২. কতটি লিখতে হবে ও কতটি জমা দিতে হবে জানাও।</p>
+  <p>৩. ডেডলাইন ও সম্ভাব্য সময় নির্বাচন করো।</p>
+  <p>৪. পেমেন্টের তথ্য দিয়ে অর্ডার পাঠাও।</p>
+  <p class="small">কাজের সময় চাহিদা ও কাজের পরিমাণের ওপর নির্ভর করবে। অর্ডার গ্রহণের আগে সময় নিশ্চিত করা হবে।</p>
+</div>
 
-    <div class="card hero-card">
-      <h2>সহজ অর্ডার প্রক্রিয়া</h2>
-      <p>১. বিষয় ও পত্র নির্বাচন করো।</p>
-      <p>২. কতটি লিখতে হবে ও কতটি জমা দিতে হবে জানাও।</p>
-      <p>৩. ডেডলাইন ও সম্ভাব্য সময় নির্বাচন করো।</p>
-      <p>৪. পেমেন্টের তথ্য দিয়ে অর্ডার পাঠাও।</p>
-      <p class="small">কাজের সময় চাহিদা ও কাজের পরিমাণের ওপর নির্ভর করবে। অর্ডার গ্রহণের আগে সময় নিশ্চিত করা হবে।</p>
-    </div>
-  </section>
-
-  <section class="section" id="services">
+  </section>  <section class="section" id="services">
     <div class="section-title">
       <div class="tag">OUR SERVICES</div>
       <h2>আমাদের সার্ভিসসমূহ</h2>
@@ -152,191 +170,162 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
       <div class="card service"><div class="symbol">🧬</div><h3>জীববিজ্ঞান</h3><p>Biology Practical</p></div>
       <div class="card service"><div class="symbol">💻</div><h3>ICT</h3><p>ICT Practical</p></div>
     </div>
-  </section>
-
-  <section class="section" id="order">
+  </section>  <section class="section" id="order">
     <div class="section-title">
       <div class="tag">PLACE YOUR ORDER</div>
       <h2>প্র্যাকটিক্যাল অর্ডার ফর্ম</h2>
       <p>সব তথ্য ঠিকভাবে পূরণ করো। * চিহ্নিত ঘরগুলো আবশ্যক।</p>
-    </div>
+    </div><div class="card">
+  <div class="note">
+    <strong>📱 নগদ পেমেন্ট নম্বর:</strong>
+    <span class="price">01336478777</span><br>
+    পেমেন্ট করার আগে অর্ডারের পরিমাণ ও কাজের সময় নিশ্চিত করো। TrxID দিলেই পেমেন্ট যাচাই হয়ে যায় না।
+  </div>
 
-    <div class="card">
-      <div class="note">
-        <strong>📱 নগদ পেমেন্ট নম্বর:</strong>
-        <span class="price">01336478777</span><br>
-        পেমেন্ট করার আগে অর্ডারের পরিমাণ ও কাজের সময় নিশ্চিত করো। TrxID দিলেই পেমেন্ট যাচাই হয়ে যায় না।
+  <form id="orderForm">
+    <div class="row">
+      <div>
+        <label for="name">তোমার পূর্ণ নাম *</label>
+        <input id="name" required maxlength="100" placeholder="পূর্ণ নাম">
       </div>
-
-      <form id="orderForm">
-        <div class="row">
-          <div>
-            <label for="name">তোমার পূর্ণ নাম *</label>
-            <input id="name" required maxlength="100" placeholder="পূর্ণ নাম">
-          </div>
-          <div>
-            <label for="phone">মোবাইল নম্বর *</label>
-            <input id="phone" required inputmode="tel" maxlength="20" placeholder="01XXXXXXXXX">
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="level">কোন শ্রেণি? *</label>
-            <select id="level" required>
-              <option value="">নির্বাচন করো</option>
-              <option value="SSC">SSC</option>
-              <option value="HSC">HSC</option>
-            </select>
-          </div>
-          <div>
-            <label for="group">বিভাগ / গ্রুপ</label>
-            <select id="group">
-              <option>বিজ্ঞান</option>
-              <option>মানবিক</option>
-              <option>ব্যবসায় শিক্ষা</option>
-              <option>প্রযোজ্য নয়</option>
-            </select>
-          </div>
-        </div>
-
-        <fieldset>
-          <legend>যে বিষয় ও পত্রের প্র্যাকটিক্যাল লাগবে *</legend>
-          <div id="subjectList" class="subjects">
-            <p>প্রথমে শ্রেণি নির্বাচন করো।</p>
-          </div>
-        </fieldset>
-
-        <div class="row">
-          <div>
-            <label for="writeCount">কয়টি প্র্যাকটিক্যাল লিখিয়ে নিতে চাও? *</label>
-            <input type="number" id="writeCount" min="1" max="100" required value="1">
-          </div>
-          <div>
-            <label for="submitCount">কয়টি প্র্যাকটিক্যাল জমা দিতে হবে? *</label>
-            <input type="number" id="submitCount" min="1" max="100" required value="1">
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="deadline">কোন তারিখের মধ্যে প্র্যাকটিক্যাল লাগবে? *</label>
-            <input type="date" id="deadline" required>
-          </div>
-          <div>
-            <label for="duration">কাজের জন্য কত দিন সময় দিতে পারবে? *</label>
-            <select id="duration" required>
-              <option value="">নির্বাচন করো</option>
-              <option>১ দিন</option>
-              <option>২ দিন</option>
-              <option>৩ দিন</option>
-              <option>৪–৫ দিন</option>
-              <option>৬–৭ দিন</option>
-              <option>৭ দিনের বেশি</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="delivery">প্র্যাকটিক্যাল কীভাবে নিতে চাও? *</label>
-          <select id="delivery" required>
-            <option value="">নির্বাচন করো</option>
-            <option>সরাসরি হাতে নিতে চাই</option>
-            <option>কুরিয়ার / ডাকযোগে নিতে চাই</option>
-            <option>আগে আলোচনা করতে চাই</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="area">এলাকা / ঠিকানা (ডেলিভারির জন্য প্রয়োজন হলে)</label>
-          <input id="area" maxlength="300" placeholder="এলাকা, উপজেলা, জেলা">
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="payment">পেমেন্টের অবস্থা *</label>
-            <select id="payment" required>
-              <option value="">নির্বাচন করো</option>
-              <option>এখনো পেমেন্ট করিনি</option>
-              <option>নগদে পেমেন্ট করেছি</option>
-            </select>
-          </div>
-          <div>
-            <label for="trx">নগদ TrxID</label>
-            <input id="trx" maxlength="100" placeholder="পেমেন্ট করলে TrxID লিখো">
-          </div>
-        </div>
-
-        <div>
-          <label for="details">অতিরিক্ত নির্দেশনা</label>
-          <textarea id="details" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা, কলেজের নির্দেশনা বা অন্য তথ্য লিখো..."></textarea>
-        </div>
-
-        <label class="check">
-          <input type="checkbox" id="confirm" required>
-          <span>আমি দেওয়া তথ্য যাচাই করেছি। কাজের সময় ও অর্ডার গ্রহণ আলাদাভাবে নিশ্চিত করতে হবে। *</span>
-        </label>
-
-        <button class="btn" type="submit" id="submitBtn">অর্ডারের তথ্য পাঠাও</button>
-        <div id="status" class="status-box" role="status" aria-live="polite"></div>
-
-        <p class="small">অর্ডার পাঠানো মানেই অর্ডার নিশ্চিত নয়। নিশ্চিতকরণ না পাওয়া পর্যন্ত কাজ সম্পন্ন হবে ধরে নিও না।</p>
-      </form>
+      <div>
+        <label for="phone">মোবাইল নম্বর *</label>
+        <input id="phone" required inputmode="tel" maxlength="20" placeholder="01XXXXXXXXX">
+      </div>
     </div>
-  </section>
 
-  <!-- Customer order tracking -->
-  <section class="section" id="track">
+    <div class="row">
+      <div>
+        <label for="level">কোন শ্রেণি? *</label>
+        <select id="level" required>
+          <option value="">নির্বাচন করো</option>
+          <option value="SSC">SSC</option>
+          <option value="HSC">HSC</option>
+        </select>
+      </div>
+      <div>
+        <label for="group">বিভাগ / গ্রুপ</label>
+        <select id="group">
+          <option>বিজ্ঞান</option>
+          <option>মানবিক</option>
+          <option>ব্যবসায় শিক্ষা</option>
+          <option>প্রযোজ্য নয়</option>
+        </select>
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>যে বিষয় ও পত্রের প্র্যাকটিক্যাল লাগবে *</legend>
+      <div id="subjectList" class="subjects">
+        <p>প্রথমে শ্রেণি নির্বাচন করো।</p>
+      </div>
+    </fieldset>
+
+    <div class="row">
+      <div>
+        <label for="writeCount">কয়টি প্র্যাকটিক্যাল লিখিয়ে নিতে চাও? *</label>
+        <input type="number" id="writeCount" min="1" max="100" required value="1">
+      </div>
+      <div>
+        <label for="submitCount">কয়টি প্র্যাকটিক্যাল জমা দিতে হবে? *</label>
+        <input type="number" id="submitCount" min="1" max="100" required value="1">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="deadline">কোন তারিখের মধ্যে প্র্যাকটিক্যাল লাগবে? *</label>
+        <input type="date" id="deadline" required>
+      </div>
+      <div>
+        <label for="duration">কাজের জন্য কত দিন সময় দিতে পারবে? *</label>
+        <select id="duration" required>
+          <option value="">নির্বাচন করো</option>
+          <option>১ দিন</option>
+          <option>২ দিন</option>
+          <option>৩ দিন</option>
+          <option>৪–৫ দিন</option>
+          <option>৬–৭ দিন</option>
+          <option>৭ দিনের বেশি</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="delivery">প্র্যাকটিক্যাল কীভাবে নিতে চাও? *</label>
+      <select id="delivery" required>
+        <option value="">নির্বাচন করো</option>
+        <option>সরাসরি হাতে নিতে চাই</option>
+        <option>কুরিয়ার / ডাকযোগে নিতে চাই</option>
+        <option>আগে আলোচনা করতে চাই</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="area">এলাকা / ঠিকানা (ডেলিভারির জন্য প্রয়োজন হলে)</label>
+      <input id="area" maxlength="300" placeholder="এলাকা, উপজেলা, জেলা">
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="payment">পেমেন্টের অবস্থা *</label>
+        <select id="payment" required>
+          <option value="">নির্বাচন করো</option>
+          <option>এখনো পেমেন্ট করিনি</option>
+          <option>নগদে পেমেন্ট করেছি</option>
+        </select>
+      </div>
+      <div>
+        <label for="trx">নগদ TrxID</label>
+        <input id="trx" maxlength="100" placeholder="পেমেন্ট করলে TrxID লিখো">
+      </div>
+    </div>
+
+    <div>
+      <label for="details">অতিরিক্ত নির্দেশনা</label>
+      <textarea id="details" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা, কলেজের নির্দেশনা বা অন্য তথ্য লিখো..."></textarea>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" id="confirm" required>
+      <span>আমি দেওয়া তথ্য যাচাই করেছি। কাজের সময় ও অর্ডার গ্রহণ আলাদাভাবে নিশ্চিত করতে হবে। *</span>
+    </label>
+
+    <button class="btn" type="submit" id="submitBtn">অর্ডারের তথ্য পাঠাও</button>
+    <div id="status" class="status-box" role="status" aria-live="polite"></div>
+    <p class="small">অর্ডার পাঠানো মানেই অর্ডার নিশ্চিত নয়। নিশ্চিতকরণ না পাওয়া পর্যন্ত কাজ সম্পন্ন হবে ধরে নিও না।</p>
+  </form>
+</div>
+
+  </section>  <section class="section" id="track">
     <div class="section-title">
       <div class="tag">TRACK YOUR ORDER</div>
       <h2>অর্ডারের অবস্থা দেখো</h2>
       <p>অর্ডার জমা দেওয়ার পর পাওয়া ৬ সংখ্যার Order Number ও অর্ডারে দেওয়া ফোন নম্বর লিখো।</p>
+    </div><div class="card">
+  <form id="trackForm">
+    <div>
+      <label for="trackNumber">৬ সংখ্যার Order Number *</label>
+      <input id="trackNumber" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="যেমন: 583194" required>
     </div>
-
-    <div class="card">
-      <form id="trackForm">
-        <div>
-          <label for="trackNumber">৬ সংখ্যার Order Number *</label>
-          <input
-            id="trackNumber"
-            inputmode="numeric"
-            pattern="[0-9]{6}"
-            minlength="6"
-            maxlength="6"
-            placeholder="যেমন: 583194"
-            required
-          >
-        </div>
-
-        <div>
-          <label for="trackPhone">অর্ডারে দেওয়া মোবাইল নম্বর *</label>
-          <input
-            id="trackPhone"
-            inputmode="tel"
-            maxlength="20"
-            placeholder="01XXXXXXXXX"
-            required
-          >
-        </div>
-
-        <button class="btn" id="trackBtn" type="submit">স্ট্যাটাস দেখো</button>
-      </form>
-
-      <div id="trackMessage" class="status-box" role="status" aria-live="polite"></div>
-      <div id="trackResult" class="result-card" hidden></div>
+    <div>
+      <label for="trackPhone">অর্ডারে দেওয়া মোবাইল নম্বর *</label>
+      <input id="trackPhone" inputmode="tel" maxlength="20" placeholder="01XXXXXXXXX" required>
     </div>
-  </section>
+    <button class="btn" id="trackBtn" type="submit">স্ট্যাটাস দেখো</button>
+  </form>
+  <div id="trackMessage" class="status-box" role="status" aria-live="polite"></div>
+  <div id="trackResult" class="result-card" hidden></div>
+</div>
 
-  <section class="section">
+  </section>  <section class="section">
     <div class="section-title"><h2>অর্ডার কীভাবে এগোবে?</h2></div>
     <div class="steps">
       <div class="card"><h3>১. অর্ডার পাঠাও</h3><p>প্রয়োজনীয় তথ্য ও ডেডলাইন দাও।</p></div>
       <div class="card"><h3>২. সময় ও পেমেন্ট যাচাই</h3><p>কাজের পরিমাণ, সময় ও পেমেন্টের তথ্য যাচাই করে নিশ্চিত করা হবে।</p></div>
       <div class="card"><h3>৩. অর্ডার কনফার্ম</h3><p>কাজ নেওয়া সম্ভব কি না এবং সম্ভাব্য ডেলিভারির সময় জানানো হবে।</p></div>
     </div>
-  </section>
-
-  <section class="section" id="contact">
+  </section>  <section class="section" id="contact">
     <div class="section-title"><h2>যোগাযোগ ও পেমেন্ট</h2></div>
     <div class="grid">
       <div class="card"><h3>📱 নগদ</h3><p>01336478777</p><p class="small">পেমেন্টের আগে পরিমাণ নিশ্চিত করো।</p></div>
@@ -344,30 +333,34 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
       <div class="card"><h3>☎️ জরুরি যোগাযোগ</h3><p>01557125176</p><p class="small">TrxID যাচাইয়ে সমস্যা হলে যোগাযোগ করো।</p></div>
       <div class="card"><h3>📍 সার্ভিস এলাকা</h3><p>বিরল, দিনাজপুর</p></div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="card">
-      <h2>প্রতিষ্ঠাতা</h2>
-      <h3>Md. Sayadat Hossain Shafi</h3>
-      <p>Founder & Owner — Practical Care BD</p>
-      <p>HSC 2027 · Science Group · Birol Government College</p>
-      <p class="small">আমাদের লক্ষ্য শিক্ষার্থীদের প্র্যাকটিক্যাল প্রস্তুতির কাজে সহায়তা করা।</p>
-    </div>
-  </section>
-
+  </section>  <!-- Founder profile: full photo without cropping -->  <section class="section" id="founder">
+    <div class="card founder-card">
+      <div class="founder-photo-wrap">
+        <img
+          class="founder-photo"
+          src="Canva%20AI%20Image%204%20Oct%202026%2C%208_39_01%20pm_20261004_203926_0000.jpg"
+          alt="Md. Sayadat Hossain Shafi, Founder of Practical Care BD"
+          loading="lazy"
+          onerror="this.onerror=null;this.alt='Founder photo could not be loaded. Check the image filename and location.';this.style.display='none';document.getElementById('photoError').hidden=false;"
+        >
+        <p id="photoError" class="small" hidden>ছবিটি লোড হয়নি। GitHub-এ ফাইলের নাম ও অবস্থান যাচাই করো।</p>
+      </div>  <div class="founder-info">
+    <div class="tag">প্রতিষ্ঠাতা</div>
+    <h3>Md. Sayadat Hossain Shafi</h3>
+    <p class="founder-role">Founder &amp; Owner — Practical Care BD</p>
+    <p>HSC 2027 · Science Group · Birol Government College</p>
+    <p class="small">আমাদের লক্ষ্য শিক্ষার্থীদের প্র্যাকটিক্যাল প্রস্তুতির কাজে সহায়তা করা।</p>
+  </div>
 </div>
-</main>
 
-<footer>
+  </section></div>
+</main><footer>
   <div class="container">
     <strong class="logo">📘 Practical Care BD</strong>
     <p class="small">Your Practical, Our Responsibility</p>
     <p class="small">© <span id="year"></span> Practical Care BD</p>
   </div>
-</footer>
-
-<script>
+</footer><script>
 const API_BASE = "https://practical-care-bd-server.onrender.com";
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -418,7 +411,6 @@ function renderSubjects() {
     checkbox.type = "checkbox";
     checkbox.name = "subjects";
     checkbox.value = subject;
-
     checkbox.addEventListener("change", updateSubjectValidation);
 
     const text = document.createElement("span");
@@ -434,7 +426,6 @@ function renderSubjects() {
 function updateSubjectValidation() {
   const boxes = [...subjectList.querySelectorAll('input[type="checkbox"]')];
   const anyChecked = boxes.some(box => box.checked);
-
   boxes.forEach(box => {
     box.required = !anyChecked;
   });
@@ -470,17 +461,25 @@ function showTrackMessage(message, success = false) {
 
 function statusLabel(status) {
   if (status === "confirmed") {
-    return { text: "Confirmed — অর্ডার গ্রহণ করা হয়েছে", css: "status-confirmed" };
+    return {
+      text: "Confirmed — অর্ডার গ্রহণ করা হয়েছে",
+      css: "status-confirmed"
+    };
   }
   if (status === "rejected") {
-    return { text: "Rejected — অর্ডার গ্রহণ করা হয়নি", css: "status-rejected" };
+    return {
+      text: "Rejected — অর্ডার গ্রহণ করা হয়নি",
+      css: "status-rejected"
+    };
   }
-  return { text: "Pending — নিশ্চিতকরণ বাকি", css: "status-pending" };
+  return {
+    text: "Pending — নিশ্চিতকরণ বাকি",
+    css: "status-pending"
+  };
 }
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
-
   if (!form.reportValidity()) return;
 
   const selectedSubjects = [
@@ -554,7 +553,6 @@ form.addEventListener("submit", async event => {
       true
     );
 
-    // Keep the tracking details available for the customer.
     document.getElementById("trackNumber").value = result.orderNumber;
     document.getElementById("trackPhone").value = payload.phone;
 
@@ -564,7 +562,6 @@ form.addEventListener("submit", async event => {
 
   } catch (error) {
     console.error("Order submission failed:", error);
-
     showStatus(
       "❌ " + (error.message || "অর্ডার পাঠানো যায়নি।") +
       "\nকিছুক্ষণ পরে আবার চেষ্টা করো।"
@@ -575,7 +572,6 @@ form.addEventListener("submit", async event => {
   }
 });
 
-// Customer checks order status.
 document.getElementById("trackForm").addEventListener("submit", async event => {
   event.preventDefault();
 
@@ -645,12 +641,8 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
       (paymentLabels[order.payment_status] || "অবস্থা আপডেট হয়নি");
 
     resultBox.append(
-      heading,
-      numberLabel,
-      number,
-      statusHeading,
-      statusText,
-      paymentText
+      heading, numberLabel, number,
+      statusHeading, statusText, paymentText
     );
 
     if (order.created_at) {
@@ -677,6 +669,5 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
 });
 
 renderSubjects();
-</script>
-</body>
+</script></body>
 </html>
