@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practical Care BD | Practical Writing Service</title>
-<meta name="description" content="SSC ও HSC শিক্ষার্থীদের প্র্যাকটিক্যাল লেখার সহায়তা। Practical Care BD-তে অর্ডার করুন।">
+<meta name="description" content="SSC ও HSC শিক্ষার্থীদের প্র্যাকটিক্যাল লেখার সহায়তা।">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg:#04101f;
@@ -91,32 +92,17 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 .status-pending{color:#ffd166}
 .status-confirmed{color:#83ffae}
 .status-rejected{color:#ff9292}
-
-/* Founder profile and full, uncropped photo */
-.founder-card{
-  display:flex;
-  align-items:center;
-  gap:25px;
+.notice-item{
+  border:1px solid var(--line);
+  background:#102943;border-radius:12px;
+  padding:15px;margin:12px 0
 }
-.founder-photo-wrap{
-  flex:0 0 230px;
-  width:230px;
-  text-align:center;
+.notice-item h3{color:var(--blue);margin-top:0}
+.notice-date{font-size:12px;color:#9db4ca}
+.total-price{
+  padding:16px;border:1px solid #2ea879;border-radius:12px;
+  background:#103c2c;margin:8px 0
 }
-.founder-photo{
-  display:block;
-  width:100%;
-  max-width:230px;
-  height:auto;
-  object-fit:contain;
-  object-position:center;
-  border:2px solid var(--blue);
-  border-radius:14px;
-  margin:0 auto;
-}
-.founder-info{flex:1;min-width:0}
-.founder-info h3{font-size:24px}
-.founder-role{color:var(--blue);font-weight:700;margin-bottom:0}
 @media(max-width:760px){
   header{align-items:flex-start;flex-direction:column}
   nav{gap:12px}
@@ -124,10 +110,6 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
   .grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
-  .founder-card{flex-direction:column;align-items:center;text-align:center}
-  .founder-photo-wrap{flex:initial;width:min(100%,280px)}
-  .founder-photo{max-width:280px}
-  .founder-info{width:100%}
 }
 @media(max-width:390px){
   .subjects{grid-template-columns:1fr}
@@ -135,12 +117,13 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <a class="logo" href="#home">📘 Practical Care BD</a>
   <nav>
     <a href="#home">হোম</a>
+    <a href="#notices">নোটিশ</a>
     <a href="#services">সার্ভিস</a>
     <a href="#order">অর্ডার</a>
     <a href="#track">অর্ডার স্ট্যাটাস</a>
@@ -149,43 +132,37 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
   <a class="btn" href="#order">অর্ডার করুন</a>
 </header>
 
-<!-- Advertisement 1 -->
-<script data-cfasync="false" src="https://bicea.org/14/668998f2bfb21b63f664bceb16c328d9"></script>
-
-<!-- Advertisement 2: 728x90 Banner -->
-<div class="container" style="margin-top:15px;margin-bottom:15px;text-align:center;overflow-x:auto;">
-  <script>
-    var atOptions = {
-      'key' : 'a326de57688ea2ec69bced2d8daca4b2',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
-    };
-  </script>
-  <script src="https://bicea.org/22/a326de57688ea2ec69bced2d8daca4b2"></script>
-</div>
-
-<!-- Advertisement 3 -->
-<script data-cfasync="false" src="https://afders.org/1/5e0854f82dfb33fe519d49266f79bbac"></script>
-
 <main>
 <div class="container">
+
   <section class="hero" id="home">
     <div>
       <div class="tag">SSC &amp; HSC Practical Writing Support</div>
-      <h1>তোমার প্র্যাকটিক্যাল খাতা,<br><span class="highlight">সুন্দরভাবে প্রস্তুত করার সহায়তা!</span></h1>
-      <p>Practical Care BD-তে তোমার প্র্যাকটিক্যালের চাহিদা, বিষয়, জমা দেওয়ার সময় এবং যোগাযোগের তথ্য দিয়ে অর্ডার পাঠাও। অর্ডার গ্রহণ ও সময় নিশ্চিত করার পর কাজের ব্যবস্থা করা হবে।</p>
+      <h1>তোমার প্র্যাকটিক্যাল খাতা,<br>
+      <span class="highlight">সুন্দরভাবে প্রস্তুত করার সহায়তা!</span></h1>
+      <p>Practical Care BD-তে তোমার প্র্যাকটিক্যালের বিষয়, সংখ্যা ও জমা দেওয়ার সময় দিয়ে অর্ডার পাঠাও। অর্ডার গ্রহণ ও সময় নিশ্চিত করার পর কাজের ব্যবস্থা করা হবে।</p>
       <a class="btn" href="#order">এখনই অর্ডার দাও →</a>
       <a class="btn" href="#track" style="margin-left:6px">স্ট্যাটাস দেখো</a>
     </div>
     <div class="card hero-card">
       <h2>সহজ অর্ডার প্রক্রিয়া</h2>
       <p>১. বিষয় ও পত্র নির্বাচন করো।</p>
-      <p>২. কতটি লিখতে হবে ও কতটি জমা দিতে হবে জানাও।</p>
-      <p>৩. ডেডলাইন ও সম্ভাব্য সময় নির্বাচন করো।</p>
+      <p>২. প্র্যাকটিক্যালের সংখ্যা জানাও।</p>
+      <p>৩. ডেডলাইন ও ডেলিভারি নির্বাচন করো।</p>
       <p>৪. পেমেন্টের তথ্য দিয়ে অর্ডার পাঠাও।</p>
-      <p class="small">কাজের সময় চাহিদা ও কাজের পরিমাণের ওপর নির্ভর করবে। অর্ডার গ্রহণের আগে সময় নিশ্চিত করা হবে।</p>
+      <p class="small">প্রতি প্র্যাকটিক্যাল খাতার মূল্য ১০০ টাকা। অর্ডার গ্রহণের আগে সময় নিশ্চিত করা হবে।</p>
+    </div>
+  </section>
+
+  <!-- Published notices -->
+  <section class="section" id="notices">
+    <div class="section-title">
+      <div class="tag">LATEST UPDATES</div>
+      <h2>📢 নোটিশ বোর্ড</h2>
+      <p>গুরুত্বপূর্ণ ঘোষণা ও আপডেট এখানে দেখো।</p>
+    </div>
+    <div id="noticeList">
+      <div class="notice-item">নোটিশ লোড হচ্ছে...</div>
     </div>
   </section>
 
@@ -209,11 +186,13 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
       <h2>প্র্যাকটিক্যাল অর্ডার ফর্ম</h2>
       <p>সব তথ্য ঠিকভাবে পূরণ করো। * চিহ্নিত ঘরগুলো আবশ্যক।</p>
     </div>
+
     <div class="card">
       <div class="note">
         <strong>📱 নগদ পেমেন্ট নম্বর:</strong>
         <span class="price">01336478777</span><br>
-        পেমেন্ট করার আগে অর্ডারের পরিমাণ ও কাজের সময় নিশ্চিত করো। TrxID দিলেই পেমেন্ট যাচাই হয়ে যায় না।
+        <strong>প্রতি খাতার মূল্য: ১০০ টাকা</strong><br>
+        পেমেন্ট করার আগে মোট মূল্য ও কাজের সময় নিশ্চিত করো। TrxID দিলেই পেমেন্ট যাচাই হয়ে যায় না।
       </div>
 
       <form id="orderForm">
@@ -257,13 +236,20 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 
         <div class="row">
           <div>
-            <label for="writeCount">কয়টি প্র্যাকটিক্যাল লিখিয়ে নিতে চাও? *</label>
+            <label for="writeCount">কয়টি প্র্যাকটিক্যাল খাতা লিখিয়ে নিতে চাও? *</label>
             <input type="number" id="writeCount" min="1" max="100" required value="1">
           </div>
           <div>
             <label for="submitCount">কয়টি প্র্যাকটিক্যাল জমা দিতে হবে? *</label>
             <input type="number" id="submitCount" min="1" max="100" required value="1">
           </div>
+        </div>
+
+        <div class="total-price">
+          <div>খাতার সংখ্যা: <strong id="quantityDisplay">১</strong></div>
+          <div>প্রতি খাতা: <strong>১০০ টাকা</strong></div>
+          <div class="price">মোট মূল্য: <span id="totalPrice">১০০</span> টাকা</div>
+          <p class="small">মোট মূল্য = লিখিয়ে নেওয়ার খাতার সংখ্যা × ১০০ টাকা। জমা দেওয়ার সংখ্যা আলাদা তথ্য হিসেবে নেওয়া হবে।</p>
         </div>
 
         <div class="row">
@@ -317,7 +303,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 
         <div>
           <label for="details">অতিরিক্ত নির্দেশনা</label>
-          <textarea id="details" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা, কলেজের নির্দেশনা বা অন্য তথ্য লিখো..."></textarea>
+          <textarea id="details" rows="4" maxlength="1500" placeholder="কোনো বিশেষ চাহিদা বা অন্য তথ্য লিখো..."></textarea>
         </div>
 
         <label class="check">
@@ -327,7 +313,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
 
         <button class="btn" type="submit" id="submitBtn">অর্ডারের তথ্য পাঠাও</button>
         <div id="status" class="status-box" role="status" aria-live="polite"></div>
-        <p class="small">অর্ডার পাঠানো মানেই অর্ডার নিশ্চিত নয়। নিশ্চিতকরণ না পাওয়া পর্যন্ত কাজ সম্পন্ন হবে ধরে নিও না।</p>
+        <p class="small">অর্ডার পাঠানো মানেই অর্ডার নিশ্চিত নয়। নিশ্চিতকরণ না পাওয়া পর্যন্ত অপেক্ষা করো।</p>
       </form>
     </div>
   </section>
@@ -359,7 +345,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
     <div class="section-title"><h2>অর্ডার কীভাবে এগোবে?</h2></div>
     <div class="steps">
       <div class="card"><h3>১. অর্ডার পাঠাও</h3><p>প্রয়োজনীয় তথ্য ও ডেডলাইন দাও।</p></div>
-      <div class="card"><h3>২. সময় ও পেমেন্ট যাচাই</h3><p>কাজের পরিমাণ, সময় ও পেমেন্টের তথ্য যাচাই করে নিশ্চিত করা হবে।</p></div>
+      <div class="card"><h3>২. সময় ও পেমেন্ট যাচাই</h3><p>কাজের পরিমাণ, সময় ও পেমেন্টের তথ্য যাচাই করা হবে।</p></div>
       <div class="card"><h3>৩. অর্ডার কনফার্ম</h3><p>কাজ নেওয়া সম্ভব কি না এবং সম্ভাব্য ডেলিভারির সময় জানানো হবে।</p></div>
     </div>
   </section>
@@ -369,33 +355,10 @@ footer{padding:25px 0;border-top:1px solid var(--line);text-align:center}
     <div class="grid">
       <div class="card"><h3>📱 নগদ</h3><p>01336478777</p><p class="small">পেমেন্টের আগে পরিমাণ নিশ্চিত করো।</p></div>
       <div class="card"><h3>✉️ ইমেইল</h3><p><a href="mailto:mdsayadathossain2007@gmail.com">mdsayadathossain2007@gmail.com</a></p></div>
-      <div class="card"><h3>☎️ জরুরি যোগাযোগ</h3><p>01557125176</p><p class="small">TrxID যাচাইয়ে সমস্যা হলে যোগাযোগ করো।</p></div>
-      <div class="card"><h3>📍 সার্ভিস এলাকা</h3><p>বিরল, দিনাজপুর</p></div>
+      <div class="card"><h3>📍 সার্ভিস এলাকা</h3><p>সদর, দিনাজপুর</p></div>
     </div>
   </section>
 
-  <!-- Founder profile: full photo without cropping -->
-  <section class="section" id="founder">
-    <div class="card founder-card">
-      <div class="founder-photo-wrap">
-        <img
-          class="founder-photo"
-          src="Canva%20AI%20Image%204%20Oct%202026%2C%208_39_01%20pm_20261004_203926_0000.jpg"
-          alt="Md. Sayadat Hossain Shafi, Founder of Practical Care BD"
-          loading="lazy"
-          onerror="this.onerror=null;this.alt='Founder photo could not be loaded. Check the image filename and location.';this.style.display='none';document.getElementById('photoError').hidden=false;"
-        >
-        <p id="photoError" class="small" hidden>ছবিটি লোড হয়নি। GitHub-এ ফাইলের নাম ও অবস্থান যাচাই করো।</p>
-      </div>
-      <div class="founder-info">
-        <div class="tag">প্রতিষ্ঠাতা</div>
-        <h3>Md. Sayadat Hossain Shafi</h3>
-        <p class="founder-role">Founder &amp; Owner — Practical Care BD</p>
-        <p>HSC 2027 · Science Group · Birol Government College</p>
-        <p class="small">আমাদের লক্ষ্য শিক্ষার্থীদের প্র্যাকটিক্যাল প্রস্তুতির কাজে সহায়তা করা।</p>
-      </div>
-    </div>
-  </section>
 </div>
 </main>
 
@@ -420,6 +383,7 @@ const trx = document.getElementById("trx");
 const form = document.getElementById("orderForm");
 const statusBox = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
+const writeCountInput = document.getElementById("writeCount");
 
 const today = new Date();
 const localToday = new Date(
@@ -439,6 +403,19 @@ const subjects = {
     "ICT"
   ]
 };
+
+function bnNumber(value) {
+  return String(value).replace(/\d/g, digit => "০১২৩৪৫৬৭৮৯"[digit]);
+}
+
+function updatePrice() {
+  let quantity = Number(writeCountInput.value);
+  if (!Number.isInteger(quantity) || quantity < 1) quantity = 1;
+  document.getElementById("quantityDisplay").textContent = bnNumber(quantity);
+  document.getElementById("totalPrice").textContent = bnNumber(quantity * 100);
+}
+
+writeCountInput.addEventListener("input", updatePrice);
 
 function renderSubjects() {
   subjectList.replaceChildren();
@@ -473,9 +450,7 @@ function renderSubjects() {
 function updateSubjectValidation() {
   const boxes = [...subjectList.querySelectorAll('input[type="checkbox"]')];
   const anyChecked = boxes.some(box => box.checked);
-  boxes.forEach(box => {
-    box.required = !anyChecked;
-  });
+  boxes.forEach(box => box.required = !anyChecked);
 }
 
 level.addEventListener("change", renderSubjects);
@@ -508,21 +483,66 @@ function showTrackMessage(message, success = false) {
 
 function statusLabel(status) {
   if (status === "confirmed") {
-    return {
-      text: "Confirmed — অর্ডার গ্রহণ করা হয়েছে",
-      css: "status-confirmed"
-    };
+    return {text:"Confirmed — অর্ডার গ্রহণ করা হয়েছে",css:"status-confirmed"};
   }
   if (status === "rejected") {
-    return {
-      text: "Rejected — অর্ডার গ্রহণ করা হয়নি",
-      css: "status-rejected"
-    };
+    return {text:"Rejected — অর্ডার গ্রহণ করা হয়নি",css:"status-rejected"};
   }
-  return {
-    text: "Pending — নিশ্চিতকরণ বাকি",
-    css: "status-pending"
-  };
+  return {text:"Pending — নিশ্চিতকরণ বাকি",css:"status-pending"};
+}
+
+/* Load published notices from the server */
+async function loadNotices() {
+  const container = document.getElementById("noticeList");
+
+  try {
+    const response = await fetch(`${API_BASE}/api/notices`);
+    const result = await response.json();
+
+    if (!response.ok || !result.success || !Array.isArray(result.notices)) {
+      throw new Error("নোটিশ এখন লোড করা যাচ্ছে না।");
+    }
+
+    container.replaceChildren();
+
+    if (result.notices.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "notice-item";
+      empty.textContent = "এই মুহূর্তে কোনো নতুন নোটিশ নেই।";
+      container.appendChild(empty);
+      return;
+    }
+
+    result.notices.forEach(notice => {
+      const item = document.createElement("article");
+      item.className = "notice-item";
+
+      const heading = document.createElement("h3");
+      heading.textContent = notice.title || "নোটিশ";
+
+      const message = document.createElement("p");
+      message.style.whiteSpace = "pre-line";
+      message.textContent = notice.message || "";
+
+      item.append(heading, message);
+
+      if (notice.created_at) {
+        const date = document.createElement("div");
+        date.className = "notice-date";
+        date.textContent = new Date(notice.created_at).toLocaleDateString("bn-BD");
+        item.appendChild(date);
+      }
+
+      container.appendChild(item);
+    });
+  } catch (error) {
+    container.replaceChildren();
+    const message = document.createElement("div");
+    message.className = "notice-item";
+    message.textContent = "নোটিশ লোড করা যায়নি। কিছুক্ষণ পর আবার দেখো।";
+    container.appendChild(message);
+    console.error("Notice loading failed:", error);
+  }
 }
 
 form.addEventListener("submit", async event => {
@@ -543,12 +563,12 @@ form.addEventListener("submit", async event => {
     return;
   }
 
-  const writeCount = Number(document.getElementById("writeCount").value);
+  const writeCount = Number(writeCountInput.value);
   const submitCount = Number(document.getElementById("submitCount").value);
 
-  if (!Number.isInteger(writeCount) || writeCount < 1 ||
-      !Number.isInteger(submitCount) || submitCount < 1) {
-    showStatus("প্র্যাকটিক্যালের সংখ্যা সঠিকভাবে লিখো।");
+  if (!Number.isInteger(writeCount) || writeCount < 1 || writeCount > 100 ||
+      !Number.isInteger(submitCount) || submitCount < 1 || submitCount > 100) {
+    showStatus("প্র্যাকটিক্যালের সংখ্যা ১ থেকে ১০০-এর মধ্যে লিখো।");
     return;
   }
 
@@ -576,7 +596,7 @@ form.addEventListener("submit", async event => {
   try {
     const response = await fetch(`${API_BASE}/api/orders`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {"Content-Type":"application/json"},
       body: JSON.stringify(payload)
     });
 
@@ -587,16 +607,14 @@ form.addEventListener("submit", async event => {
     }
 
     if (!result.orderNumber) {
-      throw new Error(
-        "অর্ডার জমা হয়েছে, কিন্তু Order Number পাওয়া যায়নি। Admin-এর সঙ্গে যোগাযোগ করো।"
-      );
+      throw new Error("অর্ডার জমা হয়েছে, কিন্তু Order Number পাওয়া যায়নি।");
     }
 
     showStatus(
       "✅ অর্ডার সফলভাবে জমা হয়েছে!\n\n" +
       "তোমার Order Number:\n" + result.orderNumber + "\n\n" +
-      "এই নম্বরটি সংরক্ষণ করে রাখো। পরে অর্ডারের অবস্থা দেখতে এটি লাগবে।\n" +
-      "অর্ডার গ্রহণ ও কাজের সময় নিশ্চিতকরণ এখনো বাকি।",
+      "খাতার আনুমানিক মোট মূল্য: " + (writeCount * 100) + " টাকা\n\n" +
+      "Order Number সংরক্ষণ করে রাখো। অর্ডার গ্রহণ ও কাজের সময় নিশ্চিতকরণ এখনো বাকি।",
       true
     );
 
@@ -606,13 +624,12 @@ form.addEventListener("submit", async event => {
     form.reset();
     renderSubjects();
     trx.required = false;
+    updatePrice();
 
   } catch (error) {
     console.error("Order submission failed:", error);
-    showStatus(
-      "❌ " + (error.message || "অর্ডার পাঠানো যায়নি।") +
-      "\nকিছুক্ষণ পরে আবার চেষ্টা করো।"
-    );
+    showStatus("❌ " + (error.message || "অর্ডার পাঠানো যায়নি।") +
+      "\nকিছুক্ষণ পরে আবার চেষ্টা করো।");
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "অর্ডারের তথ্য পাঠাও";
@@ -645,11 +662,10 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
   showTrackMessage("অর্ডারের তথ্য যাচাই করা হচ্ছে...");
 
   try {
-    const params = new URLSearchParams({ orderNumber, phone });
+    const params = new URLSearchParams({orderNumber, phone});
     const response = await fetch(
       `${API_BASE}/api/orders/status?${params.toString()}`
     );
-
     const result = await response.json();
 
     if (!response.ok || !result.success) {
@@ -679,12 +695,11 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
 
     const paymentText = document.createElement("p");
     const paymentLabels = {
-      verified: "যাচাইকৃত",
-      unverified: "যাচাই বাকি",
-      rejected: "যাচাইয়ে বাতিল"
+      verified:"যাচাইকৃত",
+      unverified:"যাচাই বাকি",
+      rejected:"যাচাইয়ে বাতিল"
     };
-    paymentText.textContent =
-      "পেমেন্ট: " +
+    paymentText.textContent = "পেমেন্ট: " +
       (paymentLabels[order.payment_status] || "অবস্থা আপডেট হয়নি");
 
     resultBox.append(
@@ -695,8 +710,7 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
     if (order.created_at) {
       const date = document.createElement("p");
       date.className = "small";
-      date.textContent =
-        "অর্ডারের তারিখ: " +
+      date.textContent = "অর্ডারের তারিখ: " +
         new Date(order.created_at).toLocaleString("bn-BD");
       resultBox.appendChild(date);
     }
@@ -705,10 +719,8 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
     showTrackMessage("অর্ডারের তথ্য পাওয়া গেছে।", true);
 
   } catch (error) {
-    showTrackMessage(
-      "❌ " + (error.message || "স্ট্যাটাস দেখা যাচ্ছে না।") +
-      "\nফোন নম্বর ও Order Number যাচাই করে আবার চেষ্টা করো।"
-    );
+    showTrackMessage("❌ " + (error.message || "স্ট্যাটাস দেখা যাচ্ছে না।") +
+      "\nফোন নম্বর ও Order Number যাচাই করে আবার চেষ্টা করো।");
   } finally {
     trackBtn.disabled = false;
     trackBtn.textContent = "স্ট্যাটাস দেখো";
@@ -716,6 +728,8 @@ document.getElementById("trackForm").addEventListener("submit", async event => {
 });
 
 renderSubjects();
+updatePrice();
+loadNotices();
 </script>
 </body>
 </html>
