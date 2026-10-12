@@ -1,313 +1,228 @@
-<!DOCTYPE html><html lang="bn">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Practical Care BD — Admin</title>  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      padding: 18px;
-      background: #0b1220;
-      color: #edf4ff;
-      font-family: Arial, sans-serif;
-    }
-
-    main { max-width: 900px; margin: auto; }
-
-    .panel {
-      background: #151f32;
-      padding: 18px;
-      border-radius: 14px;
-      margin: 14px 0;
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 6px 0;
-      border-radius: 8px;
-      border: 1px solid #35435b;
-      font-size: 16px;
-    }
-
-    input {
-      background: #0b1220;
-      color: white;
-    }
-
-    button {
-      background: #14b8a6;
-      color: #06131b;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: wait;
-    }
-
-    .reject { background: #fb7185; }
-    .muted { color: #a8b8d0; }
-
-    .order {
-      border: 1px solid #35435b;
-      padding: 14px;
-      border-radius: 10px;
-      margin: 12px 0;
-      overflow-wrap: anywhere;
-      background: #111b2d;
-    }
-
-    .order-number {
-      color: #5eead4;
-      font-size: 21px;
-      margin-bottom: 6px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .actions button { flex: 1; }
-
-    pre {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-    }
-
-    #dashboard { display: none; }
-
-    #status {
-      overflow-wrap: anywhere;
-    }
-  </style></head><body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical Care BD — Admin</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:#0b1220;color:#edf4ff;font-family:Arial,sans-serif}
+main{max-width:900px;margin:auto}
+.panel,.order{background:#151f32;padding:16px;border-radius:12px;margin:14px 0}
+input,textarea,button{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #35435b;font-size:16px}
+input,textarea{background:#0b1220;color:white}
+button{background:#14b8a6;color:#06131b;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6}
+.reject{background:#fb7185}
+.secondary{background:#35435b;color:white}
+.muted{color:#a8b8d0}
+.order{border:1px solid #35435b;overflow-wrap:anywhere;background:#111b2d}
+.order-number{color:#5eead4;font-size:21px}
+.actions{display:flex;gap:8px}
+.actions button{flex:1}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-family:Arial,sans-serif;line-height:1.7}
+#dashboard{display:none}
+.notice{border:1px solid #35435b;border-radius:10px;padding:12px;margin:10px 0}
+</style>
+</head>
+<body>
 <main>
-  <h1>Practical Care BD</h1>
-  <p class="muted">Admin Order Dashboard</p>  <section id="login" class="panel">
-    <h2>Admin Login</h2><input
-  id="password"
-  type="password"
-  autocomplete="current-password"
-  placeholder="Admin password"
->
+<h1>Practical Care BD</h1>
+<p class="muted">Admin Dashboard</p>
 
+<section id="login" class="panel">
+<h2>Admin Login</h2>
+<input id="password" type="password" autocomplete="current-password" placeholder="Admin password">
 <button id="loginBtn">Login</button>
 <p id="loginMsg" role="status"></p>
+</section>
 
-  </section>  <section id="dashboard">
-    <div class="panel">
-      <h2>অর্ডার ম্যানেজমেন্ট</h2>  <button id="refreshBtn">অর্ডার Refresh করো</button>
-
-  <button
-    id="logoutBtn"
-    style="background:#35435b;color:white"
-  >Logout</button>
-
-  <p id="status" role="status"></p>
+<section id="dashboard">
+<div class="panel">
+<h2>অর্ডার ম্যানেজমেন্ট</h2>
+<button id="refreshBtn">অর্ডার Refresh করো</button>
+<button id="logoutBtn" class="secondary">Logout</button>
+<p id="status" role="status"></p>
 </div>
-
 <div id="orders"></div>
 
-  </section>
-</main><script>
+<div class="panel">
+<h2>📢 নোটিশ ম্যানেজমেন্ট</h2>
+<input id="noticeTitle" maxlength="200" placeholder="নোটিশের শিরোনাম">
+<textarea id="noticeMessage" maxlength="5000" rows="4" placeholder="নোটিশের বিস্তারিত লিখো"></textarea>
+<label><input id="noticePublish" type="checkbox" style="width:auto"> সঙ্গে সঙ্গে প্রকাশ করবে</label>
+<button id="addNoticeBtn">নোটিশ যোগ করো</button>
+<p id="noticeStatus" role="status"></p>
+<div id="notices"></div>
+</div>
+</section>
+</main>
+
+<script>
 "use strict";
+const API="https://practical-care-bd-server.onrender.com";
+let token="";
+const $=id=>document.getElementById(id);
 
-const API = "https://practical-care-bd-server.onrender.com";
-let token = "";
+async function request(path,options={}){
+ const response=await fetch(API+path,{
+  ...options,
+  headers:{"Content-Type":"application/json",...(token?{Authorization:"Bearer "+token}:{}),...(options.headers||{})}
+ });
+ const result=await response.json().catch(()=>({}));
+ if(!response.ok||!result.success){
+  if(response.status===401&&token)logout();
+  throw new Error(result.message||"Request failed");
+ }
+ return result;
+}
 
-const $ = id => document.getElementById(id);
+$("loginBtn").addEventListener("click",login);
+$("password").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
 
-async function request(path, options = {}) {
-  const response = await fetch(API + path, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: "Bearer " + token } : {}),
-      ...(options.headers || {})
-    }
+async function login(){
+ $("loginMsg").textContent="লগইন হচ্ছে...";
+ $("loginBtn").disabled=true;
+ try{
+  const result=await request("/api/admin/login",{method:"POST",body:JSON.stringify({password:$("password").value})});
+  token=result.token;
+  $("password").value="";
+  $("login").style.display="none";
+  $("dashboard").style.display="block";
+  await Promise.all([loadOrders(),loadNotices()]);
+ }catch(e){$("loginMsg").textContent=e.message}
+ finally{$("loginBtn").disabled=false}
+}
+
+async function loadOrders(){
+ $("status").textContent="অর্ডার লোড হচ্ছে...";
+ $("orders").replaceChildren();
+ $("refreshBtn").disabled=true;
+ try{
+  const result=await request("/api/admin/orders");
+  const orders=Array.isArray(result.orders)?result.orders:[];
+  $("status").textContent=orders.length?"মোট অর্ডার: "+orders.length:"এখনো কোনো অর্ডার নেই।";
+  orders.forEach(order=>{
+   const card=document.createElement("article");
+   card.className="order";
+   const heading=document.createElement("h3");
+   heading.className="order-number";
+   heading.textContent=order.order_number?"Order Number: "+order.order_number:"পুরোনো অর্ডার / নম্বর নেই";
+   card.append(heading);
+   const info=document.createElement("pre");
+   info.textContent=[
+    "Database ID: "+order.id,
+    "নাম: "+(order.customer_name||""),
+    "ফোন: "+(order.phone||""),
+    "শ্রেণি: "+(order.class_level||""),
+    "বিভাগ: "+(order.student_group||""),
+    "বিষয়: "+JSON.stringify(order.subjects||[]),
+    "লেখার সংখ্যা: "+(order.write_count??""),
+    "জমার সংখ্যা: "+(order.submit_count??""),
+    "ডেডলাইন: "+(order.deadline||""),
+    "সময়: "+(order.duration||""),
+    "ডেলিভারি: "+(order.delivery_method||""),
+    "এলাকা: "+(order.area||""),
+    "পেমেন্ট: "+(order.payment_status||""),
+    "Trx ID: "+(order.trx_id||""),
+    "বিস্তারিত: "+(order.details||""),
+    "স্ট্যাটাস: "+(order.order_status||"")
+   ].join("\n");
+   card.append(info);
+   if(order.order_status==="pending"){
+    const actions=document.createElement("div");
+    actions.className="actions";
+    const yes=document.createElement("button");
+    yes.textContent="Confirm";
+    yes.onclick=()=>updateOrder(order.id,"confirmed",yes);
+    const no=document.createElement("button");
+    no.textContent="Reject";no.className="reject";
+    no.onclick=()=>updateOrder(order.id,"rejected",no);
+    actions.append(yes,no);card.append(actions);
+   }
+   $("orders").append(card);
   });
-
-  const result = await response.json().catch(() => ({}));
-
-  if (!response.ok || !result.success) {
-    if (response.status === 401 && token) logout();
-    throw new Error(result.message || "Request failed");
-  }
-
-  return result;
+ }catch(e){$("status").textContent="অর্ডার লোড করা যায়নি: "+e.message}
+ finally{$("refreshBtn").disabled=false}
 }
 
-$("loginBtn").addEventListener("click", async () => {
-  $("loginMsg").textContent = "লগইন হচ্ছে...";
-  $("loginBtn").disabled = true;
+async function updateOrder(id,status,button){
+ if(!confirm("Database ID "+id+" — "+status+" করবে?"))return;
+ button.disabled=true;
+ try{
+  await request("/api/admin/orders/"+encodeURIComponent(id),{method:"PATCH",body:JSON.stringify({status})});
+  $("status").textContent="অর্ডারের স্ট্যাটাস আপডেট হয়েছে।";
+  await loadOrders();
+ }catch(e){$("status").textContent=e.message;button.disabled=false}
+}
 
-  try {
-    const result = await request("/api/admin/login", {
-      method: "POST",
-      body: JSON.stringify({
-        password: $("password").value
-      })
-    });
+async function loadNotices(){
+ $("noticeStatus").textContent="নোটিশ লোড হচ্ছে...";
+ $("notices").replaceChildren();
+ try{
+  const result=await request("/api/admin/notices");
+  const items=Array.isArray(result.notices)?result.notices:[];
+  $("noticeStatus").textContent=items.length?"মোট নোটিশ: "+items.length:"এখনো কোনো নোটিশ নেই।";
+  items.forEach(notice=>{
+   const card=document.createElement("div");card.className="notice";
+   const title=document.createElement("h3");title.textContent=notice.title;
+   const message=document.createElement("p");message.textContent=notice.message;
+   const state=document.createElement("p");state.textContent=notice.is_published?"প্রকাশিত":"প্রকাশিত নয়";
+   state.className="muted";
+   const toggle=document.createElement("button");
+   toggle.className="secondary";
+   toggle.textContent=notice.is_published?"প্রকাশ বন্ধ করো":"প্রকাশ করো";
+   toggle.onclick=()=>toggleNotice(notice.id,!notice.is_published,toggle);
+   const del=document.createElement("button");del.className="reject";del.textContent="ডিলিট";
+   del.onclick=()=>deleteNotice(notice.id,del);
+   card.append(title,message,state,toggle,del);$("notices").append(card);
+  });
+ }catch(e){$("noticeStatus").textContent="নোটিশ লোড করা যায়নি: "+e.message}
+}
 
-    token = result.token;
-    $("password").value = "";
-
-    $("login").style.display = "none";
-    $("dashboard").style.display = "block";
-
-    await loadOrders();
-  } catch (error) {
-    $("loginMsg").textContent = error.message;
-  } finally {
-    $("loginBtn").disabled = false;
-  }
+$("addNoticeBtn").addEventListener("click",async()=>{
+ const title=$("noticeTitle").value.trim();
+ const message=$("noticeMessage").value.trim();
+ if(!title||!message){$("noticeStatus").textContent="শিরোনাম ও বিস্তারিত লিখো।";return}
+ const button=$("addNoticeBtn");button.disabled=true;
+ try{
+  await request("/api/admin/notices",{method:"POST",body:JSON.stringify({title,message,is_published:$("noticePublish").checked})});
+  $("noticeTitle").value="";$("noticeMessage").value="";$("noticePublish").checked=false;
+  $("noticeStatus").textContent="নোটিশ যোগ হয়েছে।";
+  await loadNotices();
+ }catch(e){$("noticeStatus").textContent=e.message}
+ finally{button.disabled=false}
 });
 
-async function loadOrders() {
-  $("status").textContent = "অর্ডার লোড হচ্ছে...";
-  $("orders").replaceChildren();
-
-  $("refreshBtn").disabled = true;
-
-  try {
-    const result = await request("/api/admin/orders");
-    const orders = Array.isArray(result.orders)
-      ? result.orders
-      : [];
-
-    if (!orders.length) {
-      $("status").textContent = "এখনো কোনো অর্ডার নেই।";
-      return;
-    }
-
-    $("status").textContent =
-      "মোট অর্ডার: " + orders.length;
-
-    orders.forEach(order => {
-      const card = document.createElement("article");
-      card.className = "order";
-
-      // Customer-facing Order Number
-      const heading = document.createElement("h3");
-      heading.className = "order-number";
-
-      heading.textContent = order.order_number
-        ? "Order Number: " + order.order_number
-        : "Order Number: পুরোনো অর্ডার / নম্বর নেই";
-
-      card.append(heading);
-
-      // Internal database ID
-      const dbId = document.createElement("p");
-      dbId.className = "muted";
-      dbId.textContent = "Database ID: " + order.id;
-      card.append(dbId);
-
-      const info = document.createElement("pre");
-
-      info.textContent = [
-        "নাম: " + (order.customer_name || ""),
-        "ফোন: " + (order.phone || ""),
-        "শ্রেণি: " + (order.class_level || ""),
-        "বিভাগ: " + (order.student_group || ""),
-        "বিষয়: " + JSON.stringify(order.subjects || []),
-        "লেখার সংখ্যা: " + (order.write_count ?? ""),
-        "জমার সংখ্যা: " + (order.submit_count ?? ""),
-        "ডেডলাইন: " + (order.deadline || ""),
-        "সময়: " + (order.duration || ""),
-        "ডেলিভারি: " + (order.delivery_method || ""),
-        "এলাকা: " + (order.area || ""),
-        "পেমেন্ট: " + (order.payment_status || ""),
-        "Trx ID: " + (order.trx_id || ""),
-        "বিস্তারিত: " + (order.details || ""),
-        "বর্তমান স্ট্যাটাস: " + (order.order_status || "")
-      ].join("\n");
-
-      card.append(info);
-
-      if (order.order_status === "pending") {
-        const actions = document.createElement("div");
-        actions.className = "actions";
-
-        const confirmBtn = document.createElement("button");
-        confirmBtn.textContent = "Confirm";
-
-        confirmBtn.addEventListener("click", () =>
-          updateOrder(order.id, "confirmed", confirmBtn)
-        );
-
-        const rejectBtn = document.createElement("button");
-        rejectBtn.textContent = "Reject";
-        rejectBtn.className = "reject";
-
-        rejectBtn.addEventListener("click", () =>
-          updateOrder(order.id, "rejected", rejectBtn)
-        );
-
-        actions.append(confirmBtn, rejectBtn);
-        card.append(actions);
-      }
-
-      $("orders").append(card);
-    });
-  } catch (error) {
-    $("status").textContent =
-      "অর্ডার লোড করা যায়নি: " + error.message;
-  } finally {
-    $("refreshBtn").disabled = false;
-  }
+async function toggleNotice(id,published,button){
+ button.disabled=true;
+ try{
+  await request("/api/admin/notices/"+encodeURIComponent(id),{method:"PATCH",body:JSON.stringify({is_published:published})});
+  await loadNotices();
+ }catch(e){$("noticeStatus").textContent=e.message;button.disabled=false}
 }
 
-async function updateOrder(id, status, button) {
-  const order = status === "confirmed" ? "Confirm" : "Reject";
-
-  if (!confirm("Database ID " + id + " — " + order + " করবে?")) {
-    return;
-  }
-
-  button.disabled = true;
-
-  try {
-    await request(
-      "/api/admin/orders/" + encodeURIComponent(id),
-      {
-        method: "PATCH",
-        body: JSON.stringify({ status })
-      }
-    );
-
-    $("status").textContent =
-      "অর্ডারের স্ট্যাটাস আপডেট হয়েছে।";
-
-    await loadOrders();
-  } catch (error) {
-    $("status").textContent =
-      "আপডেট করা যায়নি: " + error.message;
-
-    button.disabled = false;
-  }
+async function deleteNotice(id,button){
+ if(!confirm("এই নোটিশটি ডিলিট করবে?"))return;
+ button.disabled=true;
+ try{
+  await request("/api/admin/notices/"+encodeURIComponent(id),{method:"DELETE"});
+  $("noticeStatus").textContent="নোটিশ ডিলিট হয়েছে।";
+  await loadNotices();
+ }catch(e){$("noticeStatus").textContent=e.message;button.disabled=false}
 }
 
-function logout() {
-  token = "";
-  $("dashboard").style.display = "none";
-  $("login").style.display = "block";
-  $("orders").replaceChildren();
-  $("loginMsg").textContent = "";
+$("refreshBtn").addEventListener("click",loadOrders);
+$("logoutBtn").addEventListener("click",logout);
+function logout(){
+ token="";
+ $("dashboard").style.display="none";
+ $("login").style.display="block";
+ $("orders").replaceChildren();
+ $("notices").replaceChildren();
+ $("loginMsg").textContent="";
+ $("password").value="";
 }
-
-$("refreshBtn").addEventListener("click", loadOrders);
-$("logoutBtn").addEventListener("click", logout);
-
-$("password").addEventListener("keydown", event => {
-  if (event.key === "Enter") {
-    $("loginBtn").click();
-  }
-});
-</script></body>
+</script>
+</body>
 </html>
